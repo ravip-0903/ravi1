@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<addon>
+	<id>devtools</id>
+	<name>Development Tools</name>
+	<priority>1900</priority>
+	<position>90</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<translations>
+
+	</translations>
+	
+	<opt_settings>
+	</opt_settings>
+	
+	<opt_queries> 
+	<item>
+	INSERT INTO `cscart_language_values` (`lang_code`, `name`, `value`) 
+		VALUES 
+		('EN', 'development_tools', 'Development Tools'),
+		('EN', 'notImplemented', 'This feature is not implemented in this version of the software, please email contact@sinclairtechnologysolutions.com to request the latest version.')
+	;</item>
+	<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'development_tools'</item>
+	<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'notImplemented'</item>
+		
+	</opt_queries>
+</addon>

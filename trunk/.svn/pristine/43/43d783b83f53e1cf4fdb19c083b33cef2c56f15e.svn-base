@@ -1,0 +1,479 @@
+{* $Id: main.tpl 10618 2010-09-13 11:50:51Z alexions $ *}
+
+{block group="top" assign="top"}
+
+{if ($controller == "profiles" && $mode == "update") || ($controller == "orders" && $mode == "search") || ($controller == "rma" && $mode == "returns") || ($controller == "reward_points" && $mode == "userlog") || ($controller == "wishlist" && $mode == "view") || ($controller == "subscriptions" && $mode == "search") || ($controller == "orders" && $mode == "downloads") || ($controller == "rate_vendor" && $mode == "manage") || ($controller == "orders" && $mode == "details")|| ($controller == "profiles" && $mode == "myaccount") || ($controller == "auth" && $mode == "login_form") || ($controller == "profiles" && $mode == "add")|| ($controller == "rate_product" && $mode == "manage")|| ($controller == "checkout" && $mode == "complete")}
+
+{block group="right" assign="left"}
+
+{else}
+
+{block group="left" assign="left"}
+
+{block group="right" assign="right"}
+
+{/if}
+
+{block group="bottom" assign="bottom"}
+<div id="container" class="container{if !$left|trim && !$right|trim}-long{elseif !$left|trim}-left{elseif !$right|trim}-right{/if}">
+	{hook name="index:main_content"}
+	<div id="header"> {include file="top.tpl"} </div>
+	{/hook} 
+    
+    <!--Box Main -->
+  <div class="ml_containermain">
+    <div class="ml_box_containermain">
+  
+    
+    <div class="clearboth"></div>
+    <!--by ankur to hide top bar on checkout-->
+    {if $controller=='checkout' && $mode=='checkout'}
+      <div style="border-top:solid 1px #eee; margin-bottom:5px"></div>
+    {/if}
+    {if $mode!='checkout'}
+      <div class="box_topmenu"> {assign var="root_cat" value='0'|fn_my_changes_get_product_data_more}
+        <ul id="hmenu" class="nav_topmenu">
+          <li><a href="index.php" title="Home" style="padding:13px 10px;"><img alt="Home" src="images/home_icon.png"></a></li>
+          {include file="views/categories/components/new_menu_items.tpl" items=$root_cat separated=true submenu=false}
+        </ul>
+      </div>
+      <div class="clearboth"></div>
+      <div class="topbluband">
+ 	  <ul style="float:left; width:100%;">    	
+        <li class="bndtrust float_left">{$lang.bandoftrust}</li>
+        <li class="grtsltion float_left"><img src="images/skin/shopclues-favicon.png"  align="absbottom" style="margin-right:5px;" />Great Selection</li>
+        <li class="lowprse float_left"><img src="images/skin/shopclues-favicon.png"  align="absbottom" style="margin-right:5px;" />Low Prices</li>
+        <li class="fstdvry float_left "><img src="images/skin/shopclues-favicon.png"  align="absbottom" style="margin-right:5px;" />Fast Delivery</li>
+		<li class="fstdvry float_left" style="padding:2px 5px 2px 23px;"><a href="http://shopclues.com/whats-new.html"><img src="http://cdn.shopclues.com/images/skin/whats_new.png"  align="absbottom" style="margin-right:5px; " /></a></li>
+        <li id="fblike_button" class="facebooklike float_right">
+		</li>
+        <li class="fstdvry gc_link_header float_right" style="margin:2px 10px 2px 2px;"><a href="/index.php?dispatch=wishlist.view">Wishlist</a></li>
+        <li class="fstdvry gc_link_header float_right"><a href="/giftcertificate"><img src="images/skin/gift_icon.png"  align="absbottom" style="margin-right:5px; float:left;" />Gift Certificate</a></li>
+	</ul>
+ </div>
+    {/if}
+    
+   <!-- end-->
+ 
+{if $category_data.category_id == $lang.48hrsale_category_id}
+<div class="maincon clearfix">
+<div class="lft_con48hrs float_left">
+	<div class="banner48hrs">
+    {$lang.48hrsale_image}
+    </div>
+</div>
+<div class="rght_contimer float_right">
+	<div class="timerarea48hrs">
+    	<div class="odptimerbg48hrs" id="cat_timer">
+        </div>
+    </div>
+</div>
+</div>
+{/if} 
+<script type="text/javascript">
+	//<![CDATA[	
+	//$(document).ready(function() {$ldelim}
+		// create a new date and insert it
+		var EndDate = new Date({$lang.48hrsale_end_datetime});
+		$.countdown('#cat_timer', EndDate);
+	//{$rdelim});	
+	//]]>
+</script>
+      
+      
+      
+      {assign var="landing_page_ids" value=","|explode:$lang.landing_pages}
+      
+      {assign var="landing_page_search_string" value=","|explode:$lang.landing_page_search_string} 
+      
+    
+      <div id="content" style="float:left;">
+        <div class="content-helper"> {if $top|trim}
+          <div class="header"> {$top} </div>
+          <div class="clearboth height_ten"></div>
+          {/if}
+          {hook name="index:columns"} 
+          <!--{if $controller neq "companies" && $mode neq "view"}
+          {assign var="companies_css" value="merchant_full"}
+          {/if}--> 
+          <!--added by wiantech--> 
+          {if $controller == "companies" && $mode == "view"}
+          {assign var="companies_css" value="merchant_full"}
+          {else}   
+          {assign var="companies_css" value=""}
+          {/if}
+          
+          {if $controller == "auth" && $mode == "login_form"}
+          {assign var="login_css" value="login_full"}
+          {else}   
+          {assign var="login_css" value=""}
+          {/if}
+          
+          {if $controller == "hotdeals" && $mode == "list"}
+          {assign var="hotdeals_css" value="hotdeals_full"}
+          {else}   
+          {assign var="hotdeals_css" value=""}
+          {/if}
+          
+          {if $controller == "bestsellingproduct" && $mode == "list"}
+          {assign var="bestseller_css" value="bestseller_full"}
+          {else}   
+          {assign var="bestseller_css" value=""}
+          {/if}
+         
+          {if $controller == "profiles" && $mode == "manage_addressbook"}
+          {assign var="adrs_css" value="products_search_full"}
+          {else}   
+          {assign var="adrs_css" value=""}
+          {/if}
+          
+          {if $controller == "categories" && $mode == "view_all"}
+          {assign var="cat_view_all" value="products_search_full"}
+          {else}   
+          {assign var="cat_view_all" value=""}
+          {/if}
+		  
+		  
+          {if $controller == "mostviewedproduct" && $mode == "list"}
+          {assign var="mostviewed_css" value="mostviewed_full"}
+          {else}   
+          {assign var="mostviewed_css" value=""}
+          {/if}
+          
+          {if $controller == "featuredproduct" && $mode == "list"}
+          {assign var="featured_css" value="featured_full"}
+          {else}   
+          {assign var="featured_css" value=""}
+          {/if}
+          
+          {if $controller == "newarrivalproduct" && $mode == "list"}
+          {assign var="newarrival_css" value="featured_full"}
+          {else}   
+          {assign var="newarrival_css" value=""}
+          {/if}
+          
+          {if $controller == "companies" && $mode == "apply_for_vendor"}
+          {assign var="companies_reg_css" value="companies_reg_full"}
+          {else}   
+          {assign var="companies_reg_css" value=""}
+          {/if}
+          
+          {if $controller == "write_to_us" && $mode == "add"}
+          {assign var="write_to_us_css" value="write_to_us_full"}
+          {else}   
+          {assign var="write_to_us_css" value=""}
+          {/if}
+          
+          {if $controller == "labs" && $mode == "add"}
+          {assign var="labs_css" value="write_to_us_full"}
+          {else}   
+          {assign var="labs_css" value=""}
+          {/if}
+          
+          
+          {if $controller == "categories" && $mode == "view"}
+          {assign var="categories_css" value="categories_full"}
+          {else} 
+          {assign var="categories_css" value=""}
+          {/if}
+          
+          {if $controller == "product_features" && $mode == "view"}
+          {assign var="product_features_css" value="product_features_full"}
+          {else} 
+          {assign var="product_features_css" value=""}
+          {/if}
+          
+          {if $controller == "products" && $mode == "onedaysale"}
+          {assign var="onedaysale_page" value="onedaysale_page"}
+          {else} 
+          {assign var="onedaysale_page" value=""}
+          {/if}
+          
+          {if $controller == "products" && $mode == "search"}
+          {assign var="products_search_css" value="products_search_full"}
+          {else} 
+          {assign var="products_search_css" value=""}
+          {/if}
+          
+          
+          {if $controller == "rate_product" && $mode == "manage"}
+          {assign var="rate_product_css" value="rate_product_full"}
+          {else} 
+          {assign var="rate_product_css" value=""}
+          {/if}
+          
+          {if $controller == "products" && $mode == "view"}
+          {assign var="products_css" value="products_full"}
+          {else}
+          {assign var="products_css" value=""}          
+          {/if} 
+          
+          {if $controller == "gift_certificates" && $mode == "add"}
+          {assign var="giftcertificate" value="login_full"}
+          {else} 
+          {assign var="giftcertificate" value=""}
+          {/if} 
+          
+          {if $controller == "gift_certificates" && $mode == "update"}
+          {assign var="giftcertificateupdate" value="login_full"}
+          {else} 
+          {assign var="giftcertificateupdate" value=""}
+          {/if}
+          
+          {if $controller == "categories" && $mode == "view" && isset($smarty.request.category_id) && $smarty.request.category_id|in_array:$config.special_sale_category_id}
+          {assign var="special_cat_css" value="login_full"}
+          {else} 
+          {assign var="special_cat_css" value=""}
+          {/if}
+          
+          {if $controller == "order_lookup" && $mode == "details"}
+          {assign var="order_lookup_detail" value="login_full"}
+          {else} 
+          {assign var="order_lookup_detail" value=""}
+          {/if}         
+           
+           {if $controller == "product_features" && $mode == "view_all"}
+          {assign var="product_feature_listing" value="categories_full"}
+          {else} 
+          {assign var="product_feature_listing" value=""}
+          {/if}         
+           
+           {if $controller == "product_features" && $mode == "view_all"}
+          {assign var="product_feature_listing" value="categories_full"}
+          {else} 
+          {assign var="product_feature_listing" value=""}
+          {/if} 
+		  
+		  <!--added by ajay--> 
+		  {if $controller == "companies" && $mode == "view_all"}
+          {assign var="comp_view_all" value="company_search_full"}
+          {else}   
+          {assign var="comp_view_all" value=""}
+          {/if}
+          
+          <!--added by wiantech--> 
+          
+          <!--added by ankur -->
+          {if $controller == "cod_confirmation" && $mode == "cod"}
+          {assign var="cod_confirm" value="login_full"}
+          {else}   
+          {assign var="cod_confirm" value=""}
+          {/if}
+          
+          <!--added by ankur -->
+          
+           <!--added by ankur -->
+          {if $controller == "my_favourite_store" && $mode == "store"}
+          {assign var="fav_store" value="categories_full"}
+          {else}   
+          {assign var="fav_store" value=""}
+          {/if}
+          
+          <!--added by ankur -->
+          
+          
+          {if $left|trim} 
+          <!--Side Left -->
+          <div style="width:170px; float:left;"> 
+          <!--            <div class="left-column"> --> 
+          {if ($controller == "profiles" && $mode == "update") || ($controller == "orders" && $mode == "search") || ($controller == "rma" && $mode == "returns") || ($controller == "reward_points" && $mode == "userlog") || ($controller == "wishlist" && $mode == "view") || ($controller == "subscriptions" && $mode == "search") || ($controller == "orders" && $mode == "downloads") || ($controller == "rate_vendor" && $mode == "manage") || ($controller == "orders" && $mode == "details") || ($controller == "profiles" && $mode == "myaccount") || ($controller == "profiles" && $mode == "add") || ($controller == "profiles" && $mode == "update_addressbook") || ($controller == "profiles" && $mode == "manage_addressbook") || ($controller == "profiles" && $mode == "updatepassword") || ($controller == "rate_product" && $mode == "manage")|| ($controller == "checkout" && $mode == "complete") || ($controller == "profiles" && $mode == "pending_feedback") || ($controller == "rma" && $mode == "details") || ($controller == "rma" && $mode == "create_return") || ($controller == "profiles" && $mode == "upload_excel") || ($controller == "my_favourite_store" && $mode == "store") }
+            
+            
+          
+          <div class="sidebox-wrapper nl_rgt_side_prd">
+              <h3 class="sidebox-title"> <span>{$lang.account_details}</span> </h3>
+              <div class="clearboth"></div>
+              <div class="sidebox-body"> {include file="blocks/my_account.tpl"} </div>
+              <div class="sidebox-bottom"> <span> &nbsp; </span> </div>
+            </div>
+            {else}
+            {if ($controller == "hotdeals" && $mode == "list") || ($controller == "companies" && $mode == "apply_for_vendor")  || ($controller == "auth" && $mode == "login_form")||($controller == "featuredproduct" && $mode == "list")||($controller == "bestsellingproduct" && $mode == "list")||($controller == "mostviewedproduct" && $mode == "list")||($controller == "newarrivalproduct" && $mode == "list") || ($controller == "gift_certificates" && $mode == "add") || ($controller == "gift_certificates" && $mode == "update") || ($controller == "order_lookup" && $mode == "details") || ($controller == "products" && $mode == "onedaysale") || ($controller =="write_to_us" && $mode =="add") || ($controller =="labs" && $mode =="add") || ($controller == "cod_confirmation" && $mode == "cod")|| ($controller == "my_favourite_store" && $mode == "store")}
+            {else}
+            	{if $controller == "categories" && $mode == "view" && isset($smarty.request.category_id) && $smarty.request.category_id|in_array:$config.special_sale_category_id}
+                {else}
+            		{$left}
+                {/if}
+            {/if}
+            {/if}
+            
+            
+            </div>
+          <!--End Side Left --> 
+          {/if}
+          <div class="central-column {$companies_css} {$products_css} {$newarrival_css} {$order_lookup_detail} {$hotdeals_css} {$mostviewed_css} {$bestseller_css} {$featured_css} {$categories_css} {$products_search_css} {$companies_reg_css} {$rate_product_css} {$product_features_css} {$login_css} {$adrs_css} {$giftcertificate} {$giftcertificateupdate} {$onedaysale_page} {$special_cat_css} {$write_to_us_css} {$product_feature_listing} {$labs_css} {$cat_view_all} {$cod_confirm} {$fav_store}">
+            <div class="central-content"> {include file="common_templates/breadcrumbs.tpl"}
+              {include file="common_templates/notification.tpl"}
+              
+              {if $controller == "categories" && $mode == "view"}
+             {hook name="categories:sub_cat"}      
+             {/hook}
+             {/if}
+                      
+              {block group="central"} </div>
+          </div>
+ {if ($controller == "companies" && $mode == "view") || ($controller == "hotdeals" && $mode == "list")|| ($controller == "companies" && $mode == "apply_for_vendor") || ($controller == "categories" && $mode == "view")|| ($controller == "products" && $mode == "search")|| ($controller == "profiles" && $mode == "myaccount") || ($controller == "profiles" && $mode == "manage_addressbook") || ($controller == "rate_product" && $mode == "manage") || ($controller == "product_features" && $mode == "view") || ($controller == "profiles" && $mode == "pending_feedback") || ($controller == "rma" && $mode == "details") || ($controller == "rma" && $mode == "create_return") || ($controller == "auth" && $mode == "login_form") || ($controller == "featuredproduct" && $mode == "list")||($controller == "bestsellingproduct" && $mode == "list")||($controller == "mostviewedproduct" && $mode == "list")||($controller == "newarrivalproduct" && $mode == "list") || ($controller == "gift_certificates" && $mode == "add") || ($controller == "gift_certificates" && $mode == "update")|| ($controller == "order_lookup" && $mode == "details") || ($controller == "products" && $mode == "onedaysale") || ($controller == "gift_certificates" && $mode == "update")|| ($controller == "order_lookup" && $mode == "details") || ($controller =="write_to_us" && $mode =="add") || ($controller =="labs" && $mode =="add")|| ($controller =="categories" && $mode =="view_all") || ($controller =="companies" && $mode =="view_all") || ($controller == "cod_confirmation" && $mode == "cod") || ($controller == "my_favourite_store" && $mode == "store")}
+          {else}
+          
+          {if $right|trim}
+          
+          {if $controller == "products" && $mode == "view"}
+          
+          {assign var="products_css" value="products_right"}
+          
+          {else}   
+          
+          {assign var="products_css" value=""}
+          
+          {/if}
+          <div class="right-column {$products_css}"> {$right} </div>
+          {/if}
+          
+          {/if}
+          
+          {/hook} 
+          
+          {if $bottom|trim}
+
+          <div class="bottom clear-both">
+          {$bottom}
+          </div>
+          {/if}
+          
+          </div>
+      </div>
+      <!--<a class="ml_footer_linktop">TOP</a> -->
+      <div class="clearboth"></div>
+    </div>
+  </div>
+  <!--End Box Main -->
+  <div class="clearboth"></div>
+</div>
+
+<!--Footer -->
+<!--<div class="ml_footer"> 
+  <div class="ml_box_footer"> 
+	
+    <div class="ml_box_footer_weboptions">
+    
+    {$lang.footer_testimonial}
+    
+    {include file="simple_registration.tpl"}
+    
+    </div>
+    <div class="clearboth"></div>
+  </div>  
+</div> -->
+<!--End Footer -->
+<!--<div class="clearboth"></div> -->
+<!--Copyright -->
+
+
+<div class="clearboth height_twenty"></div>
+<!--Footer Area Start Here-->
+<div class="sc_footer_con">
+    <!--Changes by ankur for hiding the footer on checkout pages-->
+      
+        
+         <div class="wysiwyg-content">
+            <div class="box_trustimages"></div>
+         </div>
+         <div class="clearboth height_twenty"></div>
+          {if $mode!='checkout'}
+         
+         <div class="sc_footer clearfix">
+         	{$lang.footer_links} 
+            
+            
+            <div class="foot_seccol float_left">
+            	<div class="emailsubcribe">
+                	{$lang.footer_emailsubscribetext}
+                    
+                    <div style="height:40px;">
+                    <form name="simple_registration_form" action="{""|fn_url}" method="post">
+					<input type="hidden" name="dispatch" value="simple_registration.register" />
+                    <div class="foot_textfield float_left"><input id="email_simple_registration"  name="email" value="Email Address" type="text" class="txtfield" /></div>
+                    <div class="foot_but float_left"><input id="email_simple_reg_submit" name="" type="image" src="images/skin/subscribe_but.jpg" onclick="return val_simple_reg();" /></div>
+                    <input type="submit" id="footer_regis_submit" style="visibility:hidden; position:absolute;"/>
+                    
+                    </form>
+                    {literal}
+					<script>
+                    
+                    function val_simple_reg(){
+                            var val = document.getElementById('email_simple_registration').value;
+                            val = jQuery.trim(val);
+                            document.getElementById('email_simple_registration').value = val;
+                            if(val== '' || val=='Email Address'){
+                                    document.getElementById('email_simple_registration').style.color = "#000";
+                                    document.getElementById('email_simple_registration').style.background = "#ff9a9a";
+                                    document.getElementById('email_simple_registration').value = 'Email Address';
+                                    //document.getElementById('simple_reg_error').style.display = 'block';
+                                    return false;
+                            }else{
+                                var filter = /^\w[a-zA-Z0-9-_.]+@[a-zA-Z_]+.[a-zA-Z]+.[a-zA-Z]{2,3}$/;
+                                if(String(document.getElementById('email_simple_registration').value).search (filter) == -1)    
+                                {
+                                    document.getElementById('email_simple_registration').style.color = "#000";
+                                    document.getElementById('email_simple_registration').style.background = "#ff9a9a";
+                                    document.getElementById('email_simple_registration').value = 'Email Address';
+                                    //document.getElementById('simple_reg_error').style.display = 'block';
+                                    return false;
+                                }
+                                else
+                                {
+                                    document.getElementById('email_simple_registration').style.color = "#333";
+                                    document.getElementById('email_simple_registration').style.background = "#FFF";
+                                    //document.getElementById('simple_reg_error').style.display = 'none';
+                                    document.getElementById('footer_regis_submit').click();
+                                }
+                            }
+                        }
+                        
+                        jQuery("#email_simple_registration").bind('blur',function(){
+                            var val = document.getElementById('email_simple_registration').value;
+                            val = jQuery.trim(val);
+                            document.getElementById('email_simple_registration').value = val;
+                            if(val== '' || val=='Email Address'){
+                                document.getElementById('email_simple_registration').style.color = "#000";
+                                document.getElementById('email_simple_registration').value = 'Email Address';
+                            }
+                    });
+                    jQuery("#email_simple_registration").bind('focus',function(){
+                            var val = document.getElementById('email_simple_registration').value;
+                            
+                            if(val=='Email Address'){
+                                document.getElementById('email_simple_registration').style.color = "#000";
+                                document.getElementById('email_simple_registration').value = '';
+                            }
+                        
+                        });
+                    </script>
+                    {/literal}
+                    
+                    </div>
+                    
+                    {$lang.footer_social_links}                   
+                </div>
+            </div>
+         </div>
+         {/if}
+    
+         <div class="clearboth"></div>
+         {$lang.footer_copyright}
+        
+        
+
+</div>
+<!--Footer Area End Here-->
+
+
+{literal} 
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".ml_footer_linktop").click(function(){
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+  	return false;
+  });
+});
+</script> 
+{/literal}

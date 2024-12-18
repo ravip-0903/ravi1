@@ -1,0 +1,243 @@
+<orders>
+	<item title="view_orders" dispatch="orders.manage&amp;period=HM" alt="order_management" position="100" />
+	<!--<item title="sales_reports" dispatch="sales_reports.reports" position="200" />-->
+	
+	<!--<item title="shipments" dispatch="shipments.manage" active_option="settings.General.use_shipments" position="400" />-->
+	<side>
+		<item group="sales_reports.reports" title="manage_reports" href="%INDEX_SCRIPT?dispatch=sales_reports.reports_list" />
+	</side>
+	<item title="milkrun_manifest_download" dispatch="milkrun_download.download" extra="type=O" position="300" />
+</orders>
+<reports>
+	<!--<item title="sales_reports" dispatch="sales_reports.reports" />
+	<item title="orders_by_merchant" dispatch="sales_reports.reports&amp;report_id=7&amp;first=true" />-->
+<item title="sales_reports" dispatch="sales_reports.reports&amp;report_id=42&amp;type=O&amp;first=true" />
+<item title="merchant_reports" dispatch="sales_reports.reports&amp;report_id=20&amp;type=M&amp;first=true" />
+<item title="catalog_reports" dispatch="sales_reports.reports&amp;report_id=26&amp;type=C&amp;first=true" />
+<item title="storeanalytics" dispatch="sales_reports.reports&amp;report_id=27&amp;type=A&amp;first=true" />
+<item title="storeperformance" dispatch="sales_reports.reports&amp;report_id=30&amp;type=A&amp;first=true" />
+<item title="revenue_reports" dispatch="sales_reports.reports&amp;report_id=32&amp;type=R&amp;first=true" />
+<item title="system_reports" dispatch="sales_reports.reports&amp;report_id=38&amp;type=S&amp;first=true" />
+<item title="fulfillment_reports" dispatch="sales_reports.reports&amp;report_id=39&amp;type=F&amp;first=true" />
+<item title="scorecard_level_reports" dispatch="sales_reports.reports&amp;report_id=49&amp;type=E&amp;first=true" />
+<item title="milkrun_performance_reports" dispatch="milkrun_performance.report" />
+<item title="aging_reports" dispatch="aging_report_master.aging_lookup" />
+<!--<subitem item="sales_reports" title="milkrun_report_full" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=full" />  
+	<subitem item="sales_reports" title="milkrun_report_merchant" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=merchant" />
+	<subitem item="sales_reports" title="milkrun_report_3pl" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=3pl" />-->
+
+</reports>
+<fullfilment>
+	<item title="view_orders" dispatch="orders.manage" extra="ff=1&amp;redirect_if_one=Y&amp;dispatch=orders.manage&amp;qtymorethanlessthanselect=gte&amp;search_city_type=S&amp;status%5B%5D=B&amp;status%5B%5D=E&amp;status
+
+%5B%5D=P&amp;status%5B%5D=Q&amp;type=O&amp;period=A&amp;gift_cert_in=B%7CU&amp;dispatch%5Borders.manage%5D=Search&amp;hint_new_view=Name" alt="order_management" position="100" />
+	<item title="manage_milkrun_process" dispatch="milkrun_create.milkrun_generate" />
+	<item title="manage_package_qa" dispatch="manifest_ui.order_onwards_QA_screen" extra="onwardsreturn=onwards" />
+	<item title="manage_basic_fulfillment" />
+	<item title="manifest_dispatch_report" dispatch="manifest_create.manifest_generate" />
+	<item title="manifest_search" dispatch="manifest_search.manifest_list" />
+	<item title="manifest_ui" dispatch="manifest_ui.manifest" />
+	<item title="bulk_order_state" />
+	<item title="shipments"/>
+	<item title="outofSLA" dispatch="orders.manage" extra="ff=1" />
+	<item title="actionreport" dispatch="orders.manage" extra="ff=1" />
+	<item title="Other" />
+
+</fullfilment>
+
+<catalog>
+	<item title="categories" dispatch="categories.manage" position="100" />
+	<item title="products" dispatch="products.manage&amp;first=true" position="200" />
+	<item title="product_features" dispatch="product_features.manage" position="300" />
+	<item title="product_filters" dispatch="product_filters.manage" position="400" />
+	<item title="global_options" dispatch="product_options.manage" position="500" />
+	<item title="import_data" dispatch="exim.import" position="600" />
+	<item title="export_data" dispatch="exim.export" position="700" />
+	<item title="manage_tp" dispatch="product_tp_master.product_tp" position="1000" />
+	<item title="special_offer_bulk_update" dispatch="bulk_special_offer_update.update" position="1100" />
+	
+	<subitem item="import_data" title="products" href="%INDEX_SCRIPT?dispatch=exim.import&amp;section=products" />
+	<subitem item="import_data" title="orders" href="%INDEX_SCRIPT?dispatch=exim.import&amp;section=orders" />
+	<subitem item="import_data" title="translations" href="%INDEX_SCRIPT?dispatch=exim.import&amp;section=translations" />
+	<subitem item="import_data" title="users" href="%INDEX_SCRIPT?dispatch=exim.import&amp;section=users" />
+	
+	<subitem item="export_data" title="products" href="%INDEX_SCRIPT?dispatch=exim.export&amp;section=products" />
+	<subitem item="export_data" title="orders" href="%INDEX_SCRIPT?dispatch=exim.export&amp;section=orders" />
+	<subitem item="export_data" title="translations" href="%INDEX_SCRIPT?dispatch=exim.export&amp;section=translations" />
+	<subitem item="export_data" title="users" href="%INDEX_SCRIPT?dispatch=exim.export&amp;section=users" />
+	
+	<side>
+		<item group="products.manage" title="global_update" href="%INDEX_SCRIPT?dispatch=products.global_update" />
+		<item group="products.manage" title="bulk_product_addition" href="%INDEX_SCRIPT?dispatch=products.m_add" />
+		<item group="products.manage" title="product_subscriptions" href="%INDEX_SCRIPT?dispatch=products.p_subscr" />
+	
+		<item group="categories.manage" title="bulk_category_addition" href="%INDEX_SCRIPT?dispatch=categories.m_add" />
+
+		<item group="categories.update" title="add_subcategory" href="%INDEX_SCRIPT?dispatch=categories.add&amp;parent_id=%CATEGORY_ID" />
+		<item group="categories.update" title="add_product" href="%INDEX_SCRIPT?dispatch=products.add&amp;category_id=%CATEGORY_ID" />
+		<item group="categories.update" title="view_products" href="%INDEX_SCRIPT?dispatch=products.manage&amp;cid=%CATEGORY_ID" />
+		<item group="categories.update" title="delete_this_category" href="%INDEX_SCRIPT?dispatch=categories.delete&amp;category_id=%CATEGORY_ID" meta="cm-confirm" />
+
+		<item group="products.update" title="add_product" href="%INDEX_SCRIPT?dispatch=products.add" />
+		<item group="products.update" title="clone_this_product" href="%INDEX_SCRIPT?dispatch=products.clone&amp;product_id=%PRODUCT_ID" />
+		<item group="products.update" title="delete_this_product" href="%INDEX_SCRIPT?dispatch=products.delete&amp;product_id=%PRODUCT_ID" meta="cm-confirm" />
+		
+		<item group="product_options.global" title="apply_to_products" href="%INDEX_SCRIPT?dispatch=product_options.global.apply" />
+			
+			<item group="exim.import" title="export" href="%INDEX_SCRIPT?dispatch=exim.export&amp;section=products" />
+			<item group="exim.export" title="import" href="%INDEX_SCRIPT?dispatch=exim.import&amp;section=products" />
+	</side>
+</catalog>
+
+<customers>
+	<item title="users" dispatch="profiles.manage" extra="first=true" position="100" />
+	<item title="administrators" dispatch="profiles.manage" extra="user_type=A&amp;first=true" position="200" />
+	<item title="customers" dispatch="profiles.manage" extra="user_type=C&amp;first=true" position="300" />
+	
+	<item title="users_carts" dispatch="cart.cart_list" position="700" />
+	<item title="usergroups" dispatch="usergroups.manage" position="800" />
+	
+	<side>
+		<item group="usergroups.manage" title="user_group_requests" href="%INDEX_SCRIPT?dispatch=usergroups.requests" />
+	</side>
+</customers>
+
+<vendors>
+	<item title="vendors" links_group="vendors" dispatch="companies.manage" position="100" />
+	<item title="vendor_communication" dispatch="companies.companies_email" position="200" />
+		<item title="submitted_deals" dispatch="deal_submission.manage" position="300" />
+	<side>
+		<item group="companies.update" title="view_vendor_products" href="%INDEX_SCRIPT?dispatch=products.manage&amp;company_id=%COMPANY_ID" />
+		<item group="companies.update" title="view_vendor_users" href="%INDEX_SCRIPT?dispatch=profiles.manage&amp;company_id=%COMPANY_ID" />
+		<item group="companies.update" title="view_vendor_orders" href="%INDEX_SCRIPT?dispatch=orders.manage&amp;company_id=%COMPANY_ID" />
+	</side>
+	<item title="store_setup" dispatch="storesetup.manage" position="600" />
+	<item title="brandstore_manager" dispatch="brands.manage" position="700" />
+</vendors>
+<marketing>
+ <item title="promotions" dispatch="promotions.manage" position="800" />
+ <side>
+ 	<item group="promotions.update" title="add_cart_promotion" href="%INDEX_SCRIPT?dispatch=promotions.add&amp;zone=cart" />
+ 	<item group="promotions.update" title="add_catalog_promotion" href="%INDEX_SCRIPT?dispatch=promotions.add&amp;zone=catalog" />
+ </side>
+ <item title="merchant_promotions" dispatch="mpromotions.manage" position="900" />
+</marketing>
+<payments>
+<item title="how_does_it_work" dispatch="" />
+<item title="payment_faq" dispatch="" />
+<item title="billing_admin" dispatch="" position="300" />
+<item title="merchant_billing" dispatch="billing_detail_master.billing_lookup" position="400" />
+<item title="inventory_report" dispatch="merchant_report.inventory_movement_view" position="500" />
+</payments>
+<reviewsandrating>
+<item title="product_review" dispatch="review_monitoring.product_review" position="100" />
+<item title="merchant_review" dispatch="review_monitoring.merchant_review" position="200" />	
+<item title="facebook_replies" dispatch="fb_comment_mgmt.manage" position="500" />
+</reviewsandrating>
+
+<website>
+	<item title="content" links_group="website" dispatch="pages.manage" extra="get_tree=multi_level" position="100" />
+	
+	<side>
+		<item group="pages.update" title="delete_this_page" href="%INDEX_SCRIPT?dispatch=pages.delete&amp;page_id=%PAGE_ID" meta="cm-confirm" />
+		<item group="pages.update" title="clone_this_page" href="%INDEX_SCRIPT?dispatch=pages.clone&amp;page_id=%PAGE_ID" />
+		<item group="pages.update" title="add_page" href="%INDEX_SCRIPT?dispatch=pages.add&amp;page_type=T&amp;parent_id=%PAGE_ID" />
+		<item group="pages.update" title="add_link" href="%INDEX_SCRIPT?dispatch=pages.add&amp;page_type=L&amp;parent_id=%PAGE_ID" />
+			<item group="languages.manage" title="translate_privileges" href="%INDEX_SCRIPT?dispatch=usergroups.privileges" />
+		</side>
+</website>
+
+<shippings_taxes>
+	<item title="shipping_methods" dispatch="shippings.manage" position="100" />
+	<item title="taxes" dispatch="taxes.manage" position="200" />
+	<item title="states" dispatch="states.manage" position="300" />
+	<item title="countries" dispatch="countries.manage" position="400" />
+	<item title="locations" dispatch="destinations.manage" position="500" />
+	<item title="localizations" dispatch="localizations.manage" position="600" />
+	<side>
+		<item group="shippings.manage" title="realtime_shippings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Shippings" />
+		<item group="shippings.update" title="add_shipping_method" href="%INDEX_SCRIPT?dispatch=shippings.add" />
+		<item group="shippings.update" title="shipping_methods" href="%INDEX_SCRIPT?dispatch=shippings.manage" />
+		<item group="shippings.update" title="realtime_shippings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Shippings" />
+		
+		<item group="profiles.update" title="add_user" href="%INDEX_SCRIPT?dispatch=profiles.add" />
+		
+		<item group="taxes.update" title="add_tax" href="%INDEX_SCRIPT?dispatch=taxes.add" />
+		
+		<item group="destinations.update" title="add_location" href="%INDEX_SCRIPT?dispatch=destinations.add" />
+			<item group="localizations.update" title="add_localization" href="%INDEX_SCRIPT?dispatch=localizations.add" />
+		</side>
+</shippings_taxes>
+
+<administration>
+	<item title="addons" dispatch="addons.manage" position="100" />
+	
+	<item title="payment_data" dispatch="payment_types.manage" position="100" />
+	
+	
+	<item title="payment_methods" dispatch="payments.manage" position="200" />
+	<!--<item title="database" dispatch="database.manage" position="300" />-->
+	<item title="credit_cards" dispatch="static_data.manage" extra="section=C" position="400" />
+	<item title="titles" dispatch="static_data.manage" extra="section=T" position="500" />
+	<item title="currencies" dispatch="currencies.manage" position="600" />
+	
+	
+	<item title="revisions" dispatch="revisions.manage" active_option="settings.General.active_revisions_objects" position="900" />
+	<item title="workflow" dispatch="revisions_workflow.manage" active_option="settings.General.active_revisions_objects" position="1000" />
+	<item title="logs" dispatch="logs.manage" position="1100" />
+	<!--<item title="upgrade_center" dispatch="upgrade_center.manage" position="1200" />-->
+	<item title="languages" dispatch="languages.manage" position="1300" />
+	<item title="order_statuses" dispatch="statuses.manage" extra="type=O" position="1400" />
+	<item title="profile_fields" dispatch="profile_fields.manage" position="1500" />
+	<item title="status_transition" dispatch="status_transition.manage" position="1600" />
+	<item title="user_cb_limit" dispatch="user_cb_limit.manage" position="1700" />
+	
+
+	
+
+
+	
+	<side>
+		<item group="upgrade_center.manage" title="update_edition" href="%INDEX_SCRIPT?dispatch=upgrade_center.manage_editions" />
+		<item group="upgrade_center.manage_editions" title="upgrade_packages_list" href="%INDEX_SCRIPT?dispatch=upgrade_center.manage" />
+		<item group="upgrade_center.manage_editions" title="settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Upgrade_center" />
+		<item group="upgrade_center.manage" title="settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Upgrade_center" />
+		<item group="upgrade_center.check" title="settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Upgrade_center" />
+
+		<item group="database.manage" title="logs" href="%INDEX_SCRIPT?dispatch=logs.manage" />
+		<item group="database.manage" title="phpinfo" href="%INDEX_SCRIPT?dispatch=tools.phpinfo" target="_blank" />
+
+		<item group="logs.manage" title="db_backup_restore" href="%INDEX_SCRIPT?dispatch=database.manage" />
+		<item group="logs.manage" title="phpinfo" href="%INDEX_SCRIPT?dispatch=tools.phpinfo" target="_blank" />
+		<item group="logs.manage" title="clean_logs" href="%INDEX_SCRIPT?dispatch=logs.clean" meta="cm-confirm" />
+		<item group="logs.manage" title="settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Logging" />
+
+		
+		
+	</side>
+</administration>
+
+<settings>
+</settings>
+
+<design>
+	<item title="logos" dispatch="site_layout.logos" position="100" />
+	<item title="design_mode" dispatch="site_layout.design_mode" position="200" />
+	<item title="blocks" dispatch="block_manager.manage" position="300" />
+	<item title="quick_links" dispatch="static_data.manage" extra="section=N" position="400" />
+	<item title="top_menu" dispatch="static_data.manage" extra="section=A" position="500" />
+	<item title="sitemap" dispatch="sitemap.manage" position="600" />
+	<item title="template_editor" dispatch="template_editor.manage" position="700" />
+	<item title="skin_selector" dispatch="skin_selector.manage" position="800" />
+	<side>
+		<item group="sitemap" title="sitemap_settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Sitemap" />
+		<item group="sitemap.manage" title="sitemap_settings" href="%INDEX_SCRIPT?dispatch=settings.manage&amp;section_id=Sitemap" />
+	</side>
+</design>
+
+<messages>
+     
+      <item title="my_messages" dispatch="merchant_messages.messages" position="100" />
+      <item title="my_user_question" dispatch="merchant_messages.seller_connect" position="200" />
+      
+</messages>

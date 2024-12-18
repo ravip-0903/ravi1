@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<addon>
+	<id>mostviewedproduct</id>
+	<name>Clues Most Viewed Product</name>
+	<priority>99999999</priority>
+	<position>100000</position>
+	<status>active</status>
+	<dependencies></dependencies>
+</addon>

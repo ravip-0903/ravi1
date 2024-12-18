@@ -1,0 +1,97 @@
+{* $Id: step_one.tpl 12479 2011-05-18 08:54:10Z alexions $ *}
+
+<div class="step-container{if $edit}-active{/if}" id="step_one">
+  {if $smarty.session.express == 'Y' && $controller=='checkout' && $mode=='checkout' && $smarty.request.edit_step == 'step_one'}
+       <div>{$lang.step_one_express_lang_var}</div>
+   {/if}
+    {if $smarty.session.express != 'Y'}
+	<h2 class="step-title{if $edit}-active{/if}">
+		<span class="float-left">1.</span>
+
+		{if $complete && !$edit}
+			<img src="{$images_dir}/icons/icon_step_close.gif" width="19" height="17" border="0" alt="" class="float-right" />
+		{/if}
+
+		{if ($settings.General.disable_anonymous_checkout == "Y" && !$auth.user_id) || ($settings.General.disable_anonymous_checkout != "Y" && !$auth.user_id && !$contact_info_population) || $smarty.session.failed_registration == true}
+			{assign var="title" value=$lang.please_sign_in}
+		{else}
+			{if $auth.user_id != 0}
+				{assign var="login_info" value="`$user_data.firstname`&nbsp;`$user_data.lastname`"}
+			{else}
+				{assign var="login_info" value=$lang.guest}
+			{/if}
+			{assign var="title" value="`$lang.signed_in_as`&nbsp;`$login_info` - `$user_data.email`"}
+		{/if}
+		
+		{hook name="checkout:edit_link_title"}
+		<a class="title{if $contact_info_population && !$edit} cm-ajax{/if}" {if $contact_info_population && !$edit}href="{"checkout.checkout?edit_step=step_one&amp;from_step=`$edit_step`"|fn_url}" rev="checkout_steps"{/if}>{$title}</a>
+		{/hook}
+	</h2>
+        {/if}
+	{assign var="curl" value=$config.current_url|fn_query_remove:"login_type"}
+	<div id="step_one_body" class="step-body{if $edit}-active{/if}">
+		{if ($settings.General.disable_anonymous_checkout == "Y" && !$auth.user_id) || ($settings.General.disable_anonymous_checkout != "Y" && !$auth.user_id && !$contact_info_population) || $smarty.session.failed_registration == true}
+			<div id="step_one_login" {if $login_type != "login"}class="hidden"{/if}>
+				<div class="clear">
+                	{if $settings.General.disable_anonymous_checkout == "Y"}
+                    <span>{$lang.instruction_for_deal_regarding_guest_checkout_header}</span>{/if}
+					{include file="views/checkout/components/checkout_login.tpl" checkout_type="one_page"}
+                {if $settings.General.disable_anonymous_checkout == "Y"}<span>{$lang.instruction_for_deal_regarding_guest_checkout_footer}</span>{/if}
+				</div>
+			</div>
+			<div id="step_one_register" class="width50{if $login_type != "register"} hidden{/if}">
+				<form name="step_one_register_form" class="{$ajax_form}" action="{""|fn_url}" method="post">
+				<input type="hidden" name="result_ids" value="checkout_steps,sign_io,checkout_cart" />
+				<input type="hidden" name="return_to" value="checkout" />
+				<input type="hidden" name="user_data[register_at_checkout]" value="Y" />
+
+				{include file="views/profiles/components/profiles_account.tpl" nothing_extra="Y" location="checkout"}
+				{include file="views/profiles/components/profile_fields.tpl" section="C" nothing_extra="Y"}
+				
+				{hook name="checkout:checkout_steps"}{/hook}
+				
+				{if $settings.Image_verification.use_for_register == "Y"}
+					{include file="common_templates/image_verification.tpl" id="register" align="center"}
+				{/if}
+
+				<div class="buttons-container margin-top">
+					{include file="buttons/button.tpl" but_name="dispatch[checkout.add_profile]" but_text=$lang.continue}
+					&nbsp;{$lang.or}&nbsp; 
+					{include file="buttons/button.tpl" but_href=$curl but_onclick="$('#step_one_register').hide(); $('#step_one_login').show();" but_text=$lang.cancel but_role="tool"} 
+				</div>
+				</form>
+			</div>
+		{else}
+			<form name="step_one_contact_information_form" class="{$ajax_form} {$ajax_form_force}" action="{""|fn_url}" method="{if !$edit}get{else}post{/if}">
+			<input type="hidden" name="update_step" value="step_one" />
+			<input type="hidden" name="next_step" value="{if $smarty.request.from_step && $smarty.request.from_step != "step_one"}{$smarty.request.from_step}{else}step_two{/if}" />
+			<input type="hidden" name="result_ids" value="checkout_steps" />
+				{if $edit}
+					<div class="width50">
+						{include file="views/profiles/components/profile_fields.tpl" section="C" nothing_extra="Y" email_extra=$smarty.capture.email_extra}
+						<div class="right"><a href="{"auth.change_login"|fn_url}">{$lang.sign_in_as_different}</a></div>
+
+						{hook name="checkout:checkout_steps"}
+							<div class="buttons-container margin-top">
+								{include file="buttons/button.tpl" but_name="dispatch[checkout.update_steps]" but_text=$but_text}
+							</div>
+						{/hook}
+					</div>
+				{/if}
+			</form>
+		{/if}
+                
+                {if $smarty.session.express == 'Y'}
+                <div class="margin_top_twenty" style="clear: both;float: left; width: 100%;">{$lang.step_one_footer_express_lang_var}</div>
+                <a href="{"checkout.express_checkout?ec=N"|fn_url}">{$lang.normal_checkout_link}</a>
+                {/if}
+		
+		{if !$edit}
+			{hook name="checkout:edit_link"}
+			<div class="right">
+				{include file="buttons/button.tpl" but_href="checkout.checkout?edit_step=step_one&amp;from_step=`$edit_step`" but_rev="checkout_steps" but_meta="cm-ajax" but_text=$lang.change but_role="tool"}
+			</div>
+			{/hook}
+		{/if}
+	</div>
+<!--step_one--></div>

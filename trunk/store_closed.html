@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>ShopClues.com is coming...</title>
+<script type="text/javascript" src="lib/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+
+
+
+<style type="text/css">
+*{ outline:none;}
+body{ background:url(images/Store_closed/background.jpg) no-repeat top center; width:1000px; margin:0 auto; font-family:"Times New Roman", Times, serif; font-size:20px; color:#e9e7e8; height:765px;}
+h4{ font-size:24px; font-weight:normal; padding-bottom:14px;}
+input{background: url("images/Store_closed/textbox.png") no-repeat scroll 0 0 transparent;border: medium none;color: #939292;font-family: "Times New Roman",Times,serif;font-size: 16px;font-style: italic;font-weight: bold;padding: 11px 0;text-align: center;width: 280px; margin-bottom:13px;}
+input[type="submit"]{ background:url(images/Store_closed/rsvp.jpg) no-repeat top center; width:114px; height:38px; color:#FFFFFF; font-style:normal; font-size:18px;padding: 9px 0;}
+small.msg{ font-size:13px; color:#333; position:relative; top:-10px;}
+.logo{ background:url(images/Store_closed/logo.png) no-repeat; width:250px; height:54px; display:block; margin-top:167px; float:left;}
+
+.footer{width:100%; display:block; margin-top:347px;}
+.footer a{ color:#e9e7e8; text-decoration:none;}
+.footer .fb {background: url("images/Store_closed/fb.png") no-repeat scroll 0 0 transparent;}
+.footer .tt {background: url(images/Store_closed/tw.png) no-repeat scroll 0 0 transparent;}
+.footer .in_fr { background:url(images/Store_closed/invitefriends.png) no-repeat scroll 0 0;}
+.fb, .tt{ float:left; width:200px;padding: 6px 10px 3px 64px;line-height: 19px;}
+.fb:hover, .tt:hover{ text-decoration:underline;}
+.in_fr{ display:block; width:199px; height:36px; float:right; margin-top:7px;}
+#visitor_form{ height:162px;}
+#invite_friend{ margin:0 auto; width:300px; display:none; position:absolute; float:right; background:#CCCCCC; left:40%; top:50%; border:5px solid #333; -moz-border-radius:10px; -webkit-border-radius:10px; -o-border-radius:10px; -ms-border-radius:10px; padding:10px 30px 10px 20px ;}
+#invite_friend strong{ color:#333333; text-align:center; margin-bottom:5px;}
+.close{ background:url(images/Store_closed/close.png) no-repeat; width:42px; height:42px; display:block; float:right; position:absolute; top:0px; right:0px;}
+.succ, .succe{ background:#008ECC; border:5px solid #ccc; -moz-border-radius:10px; -webkit-border-radius:10px; -o-border-radius:10px; -ms-border-radius:10px; padding:5px; }
+</style>
+
+</head>
+<body>
+
+<a class="logo" href="http://www.shopclues.com" title="shopclues.com"></a>
+<div style="float:left; text-align:center; width:325px; margin:18px 0 0 275px;">
+<h4>Online shopping in India will never be the same again...</h4>
+<p>Do you have a clue?</p>
+<div id="visitor_form">
+<div class="succ" style=" display:none;"></div>
+<form id="frm_store_close" name="frm_store_close">
+	<input type="text" name="email" id="email" value="Enter Your Email" onfocus="if(this.value=='Enter Your Email')this.value='';" onblur="if(this.value=='')this.value='Enter Your Email';" /><br />
+    <input type="text" name="region" id="region" value="Enter Your City" onfocus="if(this.value=='Enter Your City')this.value='';" onblur="if(this.value=='')this.value='Enter Your City';" /><br />
+    <input type="submit" name="submit" value="RSVP" />
+</form>
+</div>
+
+</div>
+<br clear="all" />
+<div class="footer">
+	<a class="fb" href="http://www.facebook.com/ShopClues/" title="Facebook" target="_blank">Special offers for<br />our special fans</a>
+	<a class="tt" href="http://www.twitter.com/ShopClues/" title="Twitter" target="_blank">Tweets about the<br />great deals</a>
+	<a class="in_fr" href="javascript:void(0)" title="Invite Friend"></a>
+</div>
+
+    <div id="invite_friend">
+    <a class="in_fr close" href="javascript:void(0)" title="Close"></a>
+	<div class="succe" style=" display:none;"></div>
+	<form id="frm_invite_friend" name="frm_invite_friend">
+    	<strong>Invite Friend</strong>
+		<input type="text" name="ref_email" id="ref_email" size="100" />
+        <small class="msg">Enter Email ID Separated by Semi colon.</small><br />
+		<input type="submit" name="submit" value="Invite Friend" />
+	</form>
+</div>
+
+<script type="text/javascript">
+
+
+	$(document).ready(function () {
+	  	$("#frm_store_close").submit(function() {
+    	
+		var email = $("input#email").val();
+    	if (email == "") {
+          $("label#email").show();
+          $("input#email").focus();
+          return false;
+        } else {
+			if(!validateEmail(email)) {
+				$("label#email").show();
+          		$("input#email").focus();
+				return false;
+			}
+		}		
+    	var region = $("input#region").val();
+    	if (region == "") {
+          $("label#region").show();
+          $("input#region").focus();
+          return false;
+        }		
+    	var dataString = $(this).serialize();
+    	//alert (dataString);return false;
+    	
+		  $.ajax({
+		  type: "POST",
+		  url: "process.php",
+		  data: dataString,
+		  success: function(s) {
+			$('.succ').html("Thank you for registering.");
+			$('.succ').show();
+			$('#frm_store_close').html("");
+			
+		  }
+		 });
+        return false;
+    	});
+		
+		$("#frm_invite_friend").submit(function() {
+    	
+		var ref_email = $("input#ref_email").val();
+    	if (ref_email == "") {
+          $("label#ref_email").show();
+          $("input#ref_email").focus();
+          return false;
+        } 		
+    	var dataString = $(this).serialize();
+    	//alert (dataString);return false;
+    	
+		  $.ajax({
+		  type: "POST",
+		  url: "send_mail.php",
+		  data: dataString,
+		  success: function(s) {
+			$('.succe').html("Mail sent to friends");
+			$('.succe').show();
+			$('#frm_invite_friend').html("");
+		  }
+		 });
+        return false;
+    	});
+		
+		$(".in_fr").click(function() {
+			
+			$("#invite_friend").slideToggle();
+			
+			});
+		
+	});	
+
+
+function validateEmail(email) 
+{ 
+ var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ 
+ return email.match(re) 
+}
+</script>
+</body>				    
+</html>

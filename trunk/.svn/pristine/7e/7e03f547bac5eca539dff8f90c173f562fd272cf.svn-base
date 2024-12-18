@@ -1,0 +1,6 @@
+<?php
+header('Content-type: application/excel');
+header('Content-Disposition: attachment; filename="filename.csv"');
+
+readfile('filename.csv');
+?>

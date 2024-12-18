@@ -1,0 +1,7 @@
+/* $Id: wysiwyg_reset.css 11823 2011-02-11 15:55:09Z zeke $ */
+
+body {
+	min-width: 0;
+	background: none;
+	padding: 5px;
+}

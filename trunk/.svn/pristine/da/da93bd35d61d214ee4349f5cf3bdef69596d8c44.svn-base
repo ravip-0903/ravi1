@@ -1,0 +1,9 @@
+/* $Id$ */
+
+.janrain-button {
+	padding: 3px 10px 0 3px !important;
+}
+
+.janrain_wrapper {
+	margin-left: 5px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="/skins/basic/customer/images/icons/favicon.ico" rel="shortcut icon" />
+<title>Shopclues</title>
+</head>
+
+<body>
+
+<div style=" margin:0 auto; margin-top:20px; margin-bottom:30px; width:970px;">
+
+<a href="http://shopclues.com">
+<img  border="0" alt="ShopClues.COM" src="http://images.shopclues.com/images/ShopClues_beta.png"  style="margin-bottom:10px;">
+</a>
+
+
+<img width="971px" height="427px"  border="0" src="http://images.shopclues.com/images/msg_sorry.png"  />
+
+
+
+<p style="font-size:25px;" align="center"><font color="#0092b3">Customer Support :</font> <a href="mailto:support@shopclues.com" style="color:#00586e;">support@shopclues.com</a></font></p>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-27831792-1"]);
+        _gaq.push(["_trackPageview"]);
+        
+        (function() {
+                var ga = document.createElement("script");
+                ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+                ga.setAttribute("async", "true");
+                document.documentElement.firstChild.appendChild(ga);
+        })();
+//]]>
+</script>
+
+</body>
+</html>

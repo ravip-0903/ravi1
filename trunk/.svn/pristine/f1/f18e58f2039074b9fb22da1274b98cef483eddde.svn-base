@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<addon>
+	<id>cluessearch</id>
+	<name>Cluessearch</name>
+	<description>All solr functionality</description>
+	<priority>2300</priority>
+	<position>120</position>
+	<status>active</status>
+	<dependencies></dependencies>
+</addon>

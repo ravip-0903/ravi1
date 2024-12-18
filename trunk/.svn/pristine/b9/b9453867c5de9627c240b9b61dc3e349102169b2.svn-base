@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<addon>
+	<id>user_email_verification</id>
+	<name>User Email Verification</name>
+	<priority>429496729443</priority>
+	<position>0</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	
+	<opt_queries>
+		<item>ALTER TABLE ?:users ADD email_verification_code VARCHAR(255) </item>
+		<item for="uninstall">ALTER TABLE ?:users DROP email_verification_code</item>
+	</opt_queries>
+</addon>

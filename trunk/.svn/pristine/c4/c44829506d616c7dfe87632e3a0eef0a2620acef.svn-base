@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<addon>
+	<id>catalog_mode</id>
+	<name>Catalog Mode</name>
+	<priority>4200</priority>
+	<position>0</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<conflicts>buy_together</conflicts>
+	<conflicts>gift_certificates</conflicts>
+	<conflicts>product_configurator</conflicts>
+	<conflicts_message>Your store operates in the catalog mode now. The following add-ons: Buy Together, Gift Certificates, Product Configurator are not able to work correctly in the catalog mode and thus have been disabled.</conflicts_message>
+	<opt_language_variables>
+		<item lang="EN" id="catalog_mode">Catalog Mode</item>
+		<item lang="EN" id="enable_catalog_mode">Enable Catalog Mode</item>
+		<item lang="EN" id="text_catalog_mode_zero_price_action_notice">In order that the "Buy now" button could be displayed on the product details page, please set "Zero price action" as "Allow customers to add the product to cart".</item>
+	</opt_language_variables>
+	<opt_settings>
+		<section name="general">
+			<item id="main_store_mode" product_types="MULTIVENDOR">
+				<name>Store operation mode</name>
+				<type>radiogroup</type>
+				<default_value>catalog</default_value>
+				<variants>
+					<item id="catalog">
+						<name>Catalog</name>
+						<translations>
+						</translations>
+					</item>
+					<item id="store">
+						<name>Store</name>
+						<translations>
+						</translations>
+					</item>
+				</variants>
+			</item>
+			<item id="add_to_cart_empty_buy_now_url">
+				<name>Allow purchasing products with empty Buy Now URL</name>
+				<type>checkbox</type>
+				<default_value>N</default_value>
+			</item>
+		</section>
+	</opt_settings>
+	<opt_queries>
+		<item>ALTER TABLE `?:companies` ADD `catalog_mode` char(1) NOT NULL default 'N', ADD INDEX (`catalog_mode`)</item>
+		<item>ALTER TABLE `?:products` ADD `buy_now_url` varchar(255) NOT NULL</item>
+		<item for="uninstall">ALTER TABLE  `?:companies` DROP `catalog_mode`</item>
+		<item for="uninstall">ALTER TABLE  `?:products` DROP `buy_now_url`</item>
+	</opt_queries>
+
+</addon>

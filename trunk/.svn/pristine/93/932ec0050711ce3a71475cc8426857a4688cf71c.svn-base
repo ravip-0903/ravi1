@@ -1,0 +1,7 @@
+/* $Id$ */
+
+body {
+	min-width: 0;
+	background: none;
+	padding: 5px;
+}

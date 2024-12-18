@@ -1,0 +1,1 @@
+{$lang.labs_attachment_subject}

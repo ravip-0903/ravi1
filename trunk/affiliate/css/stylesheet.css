@@ -1,0 +1,445 @@
+/********** Universal Css **********/
+* {
+    margin: 0;
+    padding: 0;
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    color: #333333;
+    font-family: Arial;
+    font-size: 13px;
+	background:url(../images/bg_body.gif) left top repeat;
+	behavior:url("csshover3.htc");
+}
+.body_home {
+    color: #333333;
+    font-family: Arial;
+    font-size: 13px;
+	background:url(../images/bg_home.jpg) center top no-repeat;
+}
+
+img, div, input
+{
+	behavior: url("iepngfix.htc");
+}
+
+div, p, img, ul, ol, li, h1, h2, h3, h4, h5, h6, textarea, select, option, input {
+    background-position: left top;
+    background-repeat: no-repeat;
+    border-width: 0;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.clearboth {
+    clear: both;
+    font-size: 0;
+}
+.border {
+    border: 1px solid #000000;
+}
+
+/********** Universal LINK Css **********/
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+    color: #333333;
+    text-decoration: underline;
+}
+
+/********** Text Style Css **********/
+.bold {
+    font-weight: bold;
+}
+.italic {
+    font-style: italic;
+}
+
+/********** Floating Css **********/
+.float_left {
+    display: inline;
+    float: left;
+}
+.float_right {
+    display: inline;
+    float: right;
+}
+
+/********** Border Radius Css **********/
+.round_three {
+    border-radius: 3px 3px 3px 3px;
+}
+.round_five {
+    border-radius: 5px 5px 5px 5px;
+}
+.round_ten {
+    border-radius: 10px 10px 10px 10px;
+}
+
+
+/********** Margin Css **********/
+.margin_left_five {
+    margin-left: 5px;
+}
+.margin_left_ten {
+    margin-left: 10px;
+}
+.margin_left_fifteen {
+    margin-left: 15px;
+}
+.margin_left_twenty {
+    margin-left: 20px;
+}
+.margin_left_twentyfive {
+    margin-left: 25px;
+}
+.margin_left_thirty {
+    margin-left: 30px;
+}
+.margin_left_fourty {
+    margin-left: 40px;
+}
+.margin_right_five {
+    margin-right: 5px;
+}
+.margin_right_ten {
+    margin-right: 10px;
+}
+.margin_right_fifteen {
+    margin-right: 15px;
+}
+.margin_right_twenty {
+    margin-right: 20px;
+}
+.margin_right_twentyfive {
+    margin-right: 25px;
+}
+.margin_right_thirty {
+    margin-right: 30px;
+}
+.margin_right_fourty {
+    margin-right: 40px;
+}
+.margin_top_five {
+    margin-top: 5px;
+}
+.margin_top_seven {
+    margin-top: 7px;
+}
+.margin_top_ten {
+    margin-top: 10px;
+}
+.margin_top_fifteen {
+    margin-top: 15px;
+}
+.margin_top_twenty {
+    margin-top: 20px;
+}
+.margin_top_twentyfive {
+    margin-top: 25px;
+}
+.margin_top_thirty {
+    margin-top: 30px;
+}
+.margin_top_fourty {
+    margin-top: 40px;
+}
+.margin_top_fifty {
+    margin-top: 50px;
+}
+
+/********** Input Css **********/
+.input_checkbox {
+	float:left;
+    display: inline;
+    height: 13px;
+    width: 13px;
+}
+
+/********** Shadow Css **********/
+.shadow_one_black {
+    box-shadow: 1px 1px 1px #000000;
+}
+.shadow_one_gray {
+    box-shadow: 1px 1px 1px #4D4D4D;
+}
+.text_shadow_black {
+    text-shadow: 1px 1px 0 #000000;
+}
+.text_shadow_gray {
+    text-shadow: 1px 1px 0 #4D4D4D;
+}
+
+/********** Height Css **********/
+.height_five {
+    height: 5px;
+}
+.height_ten {
+    height: 10px;
+}
+.height_fifteen {
+    height: 15px;
+}
+.height_twenty {
+    height: 10px;
+}
+.height_twentyfive {
+    height: 25px;
+}
+
+/********** Message Color Css **********/
+.error {
+    color: #dd0000;
+	font:9px verdana;
+}
+.success {
+    color: #007400;
+}
+.note {
+    color: #4683C8;
+}
+
+
+/********** Text Color Css **********/
+.text_size_ten {
+    font-family: verdana;
+    font-size: 10px;
+}
+
+/********** Width Css **********/
+.width_twoninghty
+{
+	width:290px;
+}
+.width_threehundred
+{
+	width:300px;
+}
+.width_sixfourty
+{
+	width:640px;
+}
+.width_sixeighty
+{
+	width:680px;
+}
+.width_sixseventy
+{
+	width:670px;
+}
+.width_thirty
+{
+	width:30px;
+}
+.width_fourty
+{
+	width:40px;
+}
+.width_seventy
+{
+	width:70px;
+}
+.width_ninty
+{
+	width:90px;
+}
+/********** Side Css **********/
+.aside_left
+{
+	float:left;
+	display:inline;
+	width:49%;
+}
+.aside_right
+{
+	float:right;
+	display:inline;
+	width:49%;
+
+}
+/********** End Universal Css **********/
+
+/********** Heading Css **********/
+h2
+{
+	font:20px arial;
+}
+h3
+{
+	font:bold 15px arial;
+}
+/********** End Heading Css **********/
+
+
+/********** Text Color Css **********/
+.textColorWhite
+{
+	color:#fff;
+}
+.textColorBlue
+{
+	color:#0ca6f2;
+}
+.textColorLightred
+{
+	color:#e77b7b;
+}
+
+.textColorRed
+{
+	color:#f20c1f;
+}
+/********** End  Text Color Css **********/
+
+
+
+
+/*Header*/
+.box_main
+{
+	width:600px;
+	margin:auto;
+	background:#fff url(../images/bg_maincontainer.gif) left bottom repeat-x;
+}
+
+.logo_shopclues
+{
+	float:left;
+	display:inline;
+	width:100%;
+	border-bottom:5px solid #eee;
+	padding-bottom:5px;
+}
+.box_heading
+{
+	float:left;
+	display:inline;
+	width:100%;
+	font:20px trebuchet ms;
+	color:#00a0e5;
+	margin-top:10px;
+}
+.box_context
+{
+	float:left;
+	display:inline;
+	width:100%;
+	font:13px trebuchet ms;
+	color:#797c7d;
+	line-height:20px;
+}
+.form_signup
+{
+	float:left;
+	display:inline;
+	width:600px;
+	border:1px solid #c6c9cc;
+	margin-top:20px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	padding-top:10px;
+}
+.form_signup .form_signup_row
+{
+	float:left;
+	display:inline;
+	width:96%;
+	border-bottom:1px solid #eee;
+	margin-top:10px;
+	margin-left:10px;
+	padding-bottom:10px;
+}
+.form_signup .form_signup_row .form_signup_row_fieldname
+{
+	float:left;
+	display:inline;
+	width:39%;
+	font:13px trebuchet ms;
+	color:#797c7d;
+	text-align:right;
+	margin-top:5px;
+}
+.form_signup .form_signup_row .form_signup_row_field
+{
+	float:left;
+	display:inline;
+	width:56%;
+	margin-left:10px;
+}
+.form_signup .form_signup_row .form_signup_row_field .form_signup_row_field_textbox
+{
+	float:left;
+	display:inline;
+	width:150px;
+	border:1px solid #c6c9cc;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	font:13px trebuchet ms;
+	padding:5px;
+	color:#797c7d;
+}
+.form_signup .form_signup_row .form_signup_row_field .form_signup_row_field_textbox:focus
+{
+	float:left;
+	display:inline;
+	width:150px;
+	border:1px solid #4cb2ff;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	font:13px trebuchet ms;
+	padding:5px;
+	color:#313233;
+}
+.form_signup .form_signup_row .form_signup_row_field .form_signup_row_field_button
+{
+	float:right;
+	display:inline;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	font:bold 10px verdana;
+	padding:5px 10px;
+	overflow:hidden;
+	color:#fff;
+	text-transform:uppercase;
+	background:#d34a20;
+}
+.form_signup .form_signup_row .form_signup_row_field_link
+{
+	float:left;
+	display:inline;
+	font:11px verdana;
+	margin-left:10px;
+	margin-top:2px;
+	color:#7c7e80;
+	text-decoration:none;
+}
+.form_signup .form_signup_row .form_signup_row_field .form_signup_row_field_label
+{
+	float:left;
+	display:inline;
+	font:12px trebuchet ms;
+	margin-left:5px;
+	color:#00a0e5;
+	text-decoration:none;
+}
+
+.box_disclaimer
+{
+	float:left;
+	display:inline;
+	width:100%;
+	font:11px Trebuchet MS;
+	margin-top:20px;
+	padding-top:5px;
+	border-top:5px solid #eee;
+	color: #adb0b3;
+}

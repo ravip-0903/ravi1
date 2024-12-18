@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<addon>
+	<id>hotdeals</id>
+	<name>Clues Hot deals</name>
+	<priority>99999</priority>
+	<position>100</position>
+	<status>active</status>
+	<dependencies></dependencies>
+</addon>

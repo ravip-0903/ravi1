@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<addon>
+	<id>stagingsite</id>
+	<name>Staging Site Replication</name>
+	<priority>1800</priority>
+	<position>90</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<translations>
+
+	</translations>
+	
+	<opt_settings>
+		<item id="css_dir">
+			<name>CSS Path</name>
+			<type>input</type>
+			<default_value>css</default_value>
+			<translations>
+				<item for="name" lang="EN">CSS Path</item>
+			</translations>
+		</item>
+		<item id="load_controller_css">
+			<name>Check for controller specifc CSS</name>
+			<type>checkbox</type>
+			<default_value>Y</default_value>
+			<translations>
+				<item for="name" lang="EN">Check for controller specifc CSS</item>
+			</translations>
+		</item>
+	</opt_settings>
+	
+	<opt_queries> 
+		<item>
+		INSERT INTO `cscart_language_values` (`lang_code`, `name`, `value`) 
+		VALUES 
+		('EN', 'stagingsite', 'Staging Site'),
+		('EN', 'sandbox_pathname', 'Relative pathname to deploy staging site to'),
+		('EN', 'sandbox_flushDir', 'Clear directories before copying'),
+		('EN', 'sandbox_copyImages', 'Copy images'),
+		('EN', 'select_tables_for_staging_site', 'Select which tables to synch with staging site'),
+		('EN', 'sandbox_dbName', 'DB name override'),
+		('EN', 'advanced_options', 'Advanced options')
+		
+		
+		;</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'stagingsite'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'sandbox_pathname'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'sandbox_flushDir'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'sandbox_copyImages'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'select_tables_for_staging_site'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'sandbox_dbName'</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'advanced_options'</item>
+		
+	</opt_queries>
+</addon>

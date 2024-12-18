@@ -1,0 +1,29 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+ <meta http-equiv="P3P" content='CP="IDC DSP COR CURa ADMa OUR IND PHY ONL COM STA"'>
+    <head>
+        <title></title>
+        <style>
+            .likeus_btn:hover{cursor:pointer;}
+        </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <div style="background-image:url(https://images.shopclues.com/images/mailer/facebook/me/svipbg.jpg); background-repeat:repeat-x; padding-top:30px; background-color:#f2f2f6">
+  <div style="width:600px; color:#f2f2f6; margin:0px auto">
+<div style="background-image:url(https://images.shopclues.com/images/mailer/facebook/me/svip.jpg); background-repeat: no-repeat; height:319px; background-position:center top">
+  <div style="float:left; width:600px;background-image:url(https://images.shopclues.com/images/mailer/facebook/me/sviptrance.png); background-repeat: no-repeat; background-position:right top; margin-top:260px; height:183px">
+    <div style="width:7px; float:left; height:125px; margin-left:30px;margin-top:58px;background-image:url(https://images.shopclues.com/images/mailer/facebook/me/svip_blue.jpg); background-repeat: no-repeat; background-position:left top;"></div>
+    <div style="width:500px; height:104px;margin-top:58px; font-family: Arial, Helvetica, sans-serif; font-size:17px; color:#333; padding:20px 0px 0px 27px; line-height:18px; border-bottom:1px solid #333;float:left">Like Us to Get Early & Exclusive Access
+to<br /> Our Popular Deals<br />
+<a onClick="top.location.href='<?php echo $login_url; ?>'"><img src="https://images.shopclues.com/images/mailer/facebook/me/likeus.jpg" class="likeus_btn"  border="0" style="margin-top:5px"/></a></div>
+  </div>
+</div>
+.</div>
+</div>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+<vendors>
+	<item title="sdeep_configure_ratings" dispatch="sdeep_ratings.manage" />
+</vendors>
+

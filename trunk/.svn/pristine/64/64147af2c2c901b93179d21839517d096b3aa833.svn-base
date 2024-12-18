@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<addon>
+	<id>block_packs</id>
+	<name>Block Packs</name>
+	<priority>3300</priority>
+	<position>101</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<opt_language_variables>
+		<item lang="EN" id="block_packs">Block Packs</item>
+		<item lang="EN" id="most_viewed">Most viewed</item>
+		<item lang="EN" id="your_recent_history">Your recent history</item>
+		<item lang="EN" id="best_seller_in_a_category">Best seller in a category</item>
+		<item lang="EN" id="what_other_customers_are_looking_at">What other customers are looking at</item>
+		<item lang="EN" id="frequently_bought_with">Frequently bought with</item>
+		<item lang="EN" id="customers_who_bought_this_also_bought">Customers who bought this item also bought</item>
+		<item lang="EN" id="inspired_by_your_browsing_history">Inspired by your browsing history</item>
+		<item lang="EN" id="customers_bought_after_viewing">What other customers bought after viewing this item</item>
+		<item lang="EN" id="top_featured_merchants">Top/Featured merchants</item>
+		<item lang="EN" id="best_seller_in_list_of_categories">Best seller in a list of categories</item>
+		<item lang="EN" id="num_rows">Number of blocks in row</item>
+		<item lang="EN" id="csv_list_of_categories">CSV List of categories</item>
+	</opt_language_variables>
+	
+	<opt_queries>
+		
+		<item>CREATE TABLE `cscart_what_other_customers_are_looking_at` (`input_id` MEDIUMINT( 8 ) NOT NULL AUTO_INCREMENT, `product_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`user_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`timestamp` timestamp NOT NULL ,	PRIMARY KEY (`input_id`)) ENGINE=MyISAM DEFAULT CHARSET=utf8;		</item>
+		<!--<item for="uninstall">DROP TABLE IF EXISTS cscart_what_other_customers_are_looking_at;</item>-->
+		
+		
+		<item>ALTER TABLE  `cscart_products` ADD  `view_count` MEDIUMINT( 8 ) NOT NULL DEFAULT  '0';</item>
+		<item for="uninstall">ALTER TABLE  `cscart_products` DROP `view_count`;</item>
+		
+		
+		<item>CREATE TABLE `cscart_best_seller_in_a_category` (`input_id` MEDIUMINT( 8 ) NOT NULL AUTO_INCREMENT, `product_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`category_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`sales_count` smallint(5) unsigned NOT NULL DEFAULT '0',	PRIMARY KEY (input_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8;</item>
+		<!--<item for="uninstall">DROP TABLE IF EXISTS cscart_best_seller_in_a_category;</item>-->
+		
+		<item>CREATE TABLE `cscart_frequently_bought_with` (`input_id` MEDIUMINT( 8 ) NOT NULL AUTO_INCREMENT, `product_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`bought_with_id` mediumint(8) unsigned NOT NULL DEFAULT '0',`bought_with_count` smallint(5) unsigned NOT NULL DEFAULT '0',	PRIMARY KEY (input_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8;</item>
+		<!--<item for="uninstall">DROP TABLE IF EXISTS cscart_frequently_bought_with;</item>-->
+	</opt_queries>
+</addon>

@@ -1,0 +1,42 @@
+/* $Id$ */
+
+.qsearch-result {
+	position: absolute;
+	z-index: 100;
+	background-color: #FFFFFF;
+	display: none;
+}
+.qsearch-result table td a {
+	display: inline-block;
+}
+.cm-search-row a, .cm-search-row a:hover, .cm-search-row a:visited, .cm-search-row a:active {
+	text-decoration: none;
+	color: #000000;
+}
+.cm-search-row-selected a, .cm-search-row-selected a:hover, .cm-search-row-selected a:visited, .cm-search-row-selected a:active
+.cm-search-row a:hover, .cm-search-row-selected a {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.cm-search-row {
+	background-color: #FFFFFF !important;
+	color: #000000;
+	cursor: pointer;
+}
+.cm-search-row:hover, .cm-search-row-selected, .cm-search-row:hover a {
+	background-color: #01B1DC !important;
+	color: #FFFFFF;
+	cursor: pointer;
+}
+.cm-search-row td, .cm-search-row td img, .cm-search-row:hover td, .cm-search-row:hover td img, .cm-search-row-selected td, .cm-search-row-selected td img {
+	vertical-align: middle;
+}
+.qsearch-result p.right {
+	padding-right: 3px;
+}
+.qsearch-result.border {
+	height: auto;
+}
+.qsearch-result {
+	width: 400px;
+}

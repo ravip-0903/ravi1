@@ -1,0 +1,12 @@
+{* $Id: graph_bar.tpl 11786 2011-02-08 09:44:48Z 2tl $ *}
+
+<table cellpadding="0" cellspacing="0" border="0" width="{$bar_width}" class="graph-border">
+<tr>
+	{if $value_width > 0}
+	<td class="graph-bg" width="{$value_width}%"><img src="{$images_dir}/spacer.gif" width="1" height="7" border="0" alt="" /></td>
+	{/if}
+	{if $value_width < 100}
+	<td><img src="{$images_dir}/spacer.gif" width="1" height="7" border="0" alt="" /></td>
+	{/if}
+</tr>
+</table>

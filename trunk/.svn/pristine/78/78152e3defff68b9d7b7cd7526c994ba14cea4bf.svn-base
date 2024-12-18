@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<title>About ShopClues.com</title>
+
+<base href="http://shopclues.com/" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="en" />
+<meta name="description" content="Leading marketplace for merchants and buyers" />
+<meta name="keywords" content="Leading marketplace for merchants and buyers" />
+
+
+
+<meta property="og:site_name" content="shopclues"/>
+<meta property="og:image" content="http://shopclues.com"/>
+<meta property="og:type" content="product"/>
+<meta property="og:description" content="_home_meta_description"/>
+
+<meta property="og:title" content='About Us'/>
+<link href="/skins/basic/customer/images/icons/favicon.ico" rel="shortcut icon" />
+
+
+<link href="/skins/basic/customer/css/ui/jqueryui.css" rel="stylesheet" type="text/css"/>
+<link href="/skins/basic/customer/styles.css" rel="stylesheet" type="text/css" />
+<link href="/skins/basic/customer/print.css" rel="stylesheet" media="print" type="text/css" />
+<link href="/skins/basic/customer/dropdown.css" rel="stylesheet" type="text/css" />
+<!--[if lte IE 7]>
+<link href="/skins/basic/customer/styles_ie.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+
+	<style type="text/css">
+		.free-shipping {
+			color: #007AC0 !important;
+		}
+	</style>
+
+</head>
+<body>
+<br/><br/><br/>
+
+    <a href="http://shopclues.com/invite.php"><img src="/skins/basic/customer/images/ShopClues_beta.png" width="264" height="43" border="0" alt="ShopClues.COM" /></a>
+
+<br/><br/><br/>
+<div class="wysiwyg-content">
+<h1>About Us</h1>
+
+<p> ShopClues.com is India’s first online Managed Marketplace that connects buyers and sellers online and offers a trusted and safe online shopping environment.  With our customer centric approach we provide the best online shopping experience to our customers – starting from the best selection, great technology, perfect fulfillment and ending with the best customer service you have ever experienced.</p>
+
+
+
+<p>Our rigorous merchant approval process ensures that our buyers can be assured on all aspects of product purchase, be it authenticity, quality or the price. Our merchants typically are successful retailers who have earned credibility and customer loyalty through years of excellence in building customer experience in the offline environment. So as a buyer you can be confident that you are buying the best from the best. ShopClues brings the best from all India together on one platform. </p>
+
+
+
+<p>Our merchants enjoy the benefit of our superior technology, large reach, robust fulfillment processes, reliable payment facility and unmatched marketing expertise. This allows them to focus on what they do the best, bringing the best products to the customer at the best price. We not only help our merchants reach to a larger market on a reliable platform but also to increase business multifold within the online space. This is done through a host of business management tools, effective marketing, decision enabling analytics and last but not the least, our buyer centric approach which ultimately leads to long term loyalty.</p>
+
+
+
+<p>You may be a buyer or a seller but there is one thing in common that ShopClues promises both. Unmatched online experience no matter which side of the transaction you are. Welcome to the marketplace!
+
+</p>
+</div>
+<br/><br/><br/>
+<p class="bottom-copyright class"> 
+ &copy; 2011 Clues Network PVT. LTD.. &nbsp;
+</p>
+
+<script type="text/javascript">
+//<![CDATA[
+	var _gaq = _gaq || [];
+	_gaq.push(["_setAccount", "UA-27831792-1"]);
+	_gaq.push(["_trackPageview"]);
+	
+	(function() {
+		var ga = document.createElement("script");
+		ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+		ga.setAttribute("async", "true");
+		document.documentElement.firstChild.appendChild(ga);
+	})();
+//]]>
+</script>
+</body>
+</html>

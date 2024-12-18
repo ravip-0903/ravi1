@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<addon>
+	<id>janrain</id>
+	<name>Janrain</name>
+	<priority>4200</priority>
+	<status>active</status>
+	<dependencies></dependencies>
+	<opt_settings>
+		<section name="general">
+			<item id="apikey">
+				<name>API Key</name>
+				<type>input</type>
+			</item>
+			<item id="appdomain">
+				<name>Application Domain</name>
+				<type>input</type>
+			</item>
+		</section>
+	</opt_settings>
+	<opt_language_variables>
+		<item lang="EN" id="social_login">Social login</item>
+		<item lang="EN" id="janrain_need_update_profile">The "Password" field and some other mandatory fields are empty at the moment. Please update your profile.</item>
+		<item lang="EN" id="janrain_cant_create_profile"><![CDATA[
+Unfortunately, we failed to create a customer and log in to the store due to one of the following reasons:<br />
+- You logged in to our store earlier using some other OpenID provider in which the same email is used.<br />
+- You have already registered in our store using your email.<br />
+Please contact the store owner to resolve the problems.
+]]>		</item>
+	</opt_language_variables>
+	<opt_queries>
+		<item>ALTER TABLE `?:users` ADD `janrain_identifier` varchar(32) NOT NULL default ''</item>
+		<item for="uninstall">ALTER TABLE  `?:users` DROP `janrain_identifier`</item>
+	</opt_queries>
+</addon>

@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<addon>
+	<id>quick_search</id>
+	<name>Quick search</name>
+	<priority>1</priority>
+	<position>45</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	
+	<opt_settings>
+		<item id="information">
+			<name>Information</name>
+			<type>header</type>
+		</item>
+		<item id="generate_search_phrases">
+			<name>Phrase generator</name>
+			<type>info</type>
+			<handler>fn_quick_search_generate_info</handler>
+ 		</item>
+		
+		<item id="search_result_appearance">
+			<name>Search result appearance</name>
+			<type>header</type>
+		</item>
+		<item id="user_search">
+			<name>Number of user search phrases</name>
+			<type>input</type>
+			<default_value>0</default_value>
+		</item>
+		<item id="product_search">
+			<name>Number of products in search result</name>
+			<type>input</type>
+			<default_value>10</default_value>
+		</item>
+		<item id="news_search">
+			<name>Number of news reports in search result (you should enable "Search in news" first)</name>
+			<type>input</type>
+			<default_value>0</default_value>
+		</item>
+		<item id="pages_search">
+			<name>Number of pages in search result (you should enable "Search in pages" first)</name>
+			<type>input</type>
+			<default_value>0</default_value>
+		</item>
+		<item id="show_product_images">
+			<name>Show product images in the popup menu (The "Search in pages" and "Search in news" options must be disabled)</name>
+			<type>checkbox</type>
+			<default_value>N</default_value>
+		</item>
+		
+		<item id="search_settings">
+			<name>Search settings</name>
+			<type>header</type>
+		</item>
+		<item id="min_length">
+			<name>Minimal phrase length</name>
+			<type>input</type>
+			<default_value>3</default_value>
+		</item>
+		<item id="use_cache">
+			<name>Cache the found search results</name>
+			<type>checkbox</type>
+			<default_value>Y</default_value>
+		</item>
+		<item id="search_by_sku">
+			<name>Search by product code</name>
+			<type>checkbox</type>
+			<default_value>N</default_value>
+		</item>
+		
+		<item id="search_by_title">
+			<name>Search by product name</name>
+			<type>header</type>
+		</item>
+		<item id="search_in_titles">
+			<name>Search products only by product name</name>
+			<type>checkbox</type>
+			<default_value>N</default_value>
+		</item>
+		<item id="match_type">
+			<name>Match type</name>
+			<type>selectbox</type>
+			<default_value>any</default_value>
+			<variants>
+				<item id="any">
+					<name>Any of these words</name>
+				</item>
+				<item id="all">
+					<name>All of these words</name>
+				</item>
+				<item id="exact">
+					<name>The exact phrase</name>
+				</item>
+			</variants>
+		</item>
+	</opt_settings>
+	
+	<opt_language_variables>
+		<item lang="EN" id="quick_search_generate_info"><![CDATA[In order to generate a full search phrases catalog, open this link:<br />
+			<a href="[admin_index]?dispatch=quick_search.generate_catalog" target="_blank">[http_location]/[admin_index]?dispatch=quick_search.generate_catalog</a><br /><br />
+			<strong>Note:</strong> If the found search results are cached, the search results will be saved and will get back quicker. But you will have to clear the store cache each time a new product is added, otherwise, it will not be displayed in the search results if these search results have been cached. To clear the store cache use the <a href="[admin_index]?dispatch=addons.manage&cc">clear the cache</a> link.<br /><br />]]></item>
+		<item lang="EN" id="generating_catalog">Generating search catalog</item>
+	</opt_language_variables>
+	
+	<opt_queries>
+		<item for="install">
+			CREATE TABLE `?:quick_search` (
+			`id` char(32) NOT NULL default '',
+			`item_id` mediumint(8) unsigned NOT NULL,
+			`type` varchar(1) NOT NULL,
+			`lang_code` varchar(2) NOT NULL default 'EN',
+			`text` text NOT NULL,
+			PRIMARY KEY  (`id`),
+			FULLTEXT KEY `text` (`text`)
+		) ENGINE=MyISAM DEFAULT CHARSET=UTF8
+		</item>
+		<item for="uninstall">DROP TABLE IF EXISTS `?:quick_search`</item>
+	</opt_queries>
+	
+	<functions>
+		<item for="install">fn_generate_search_catalog</item>
+	</functions>
+</addon>

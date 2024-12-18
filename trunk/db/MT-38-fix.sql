@@ -1,0 +1,2 @@
+UPDATE `shopclues`.`clues_tracking_code` SET `utm_code` = '<script src="https://track.in.omgpm.com/420562/transaction.asp?APPID=[ORDER_ID]&MID=420562&PID=[ACTION]&status=[ORDER_AMOUNT]&VCODE="></script>
+<noscript><img src="https://track.in.omgpm.com/apptag.asp?APPID=[ORDER_ID]&MID=420562&PID=[ACTION]&status=[ORDER_AMOUNT]&VCODE=" border="0" height="1" width="1"></noscript>' WHERE `clues_tracking_code`.`utm_source` = 'markgroup';

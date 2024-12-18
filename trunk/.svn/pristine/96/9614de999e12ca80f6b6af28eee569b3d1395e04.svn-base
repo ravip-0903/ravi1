@@ -1,0 +1,9 @@
+<!-- <reports>
+	<item title="sales_reports" dispatch="sales_reports.reports" />
+	<item title="orders_by_merchant" dispatch="sales_reports.reports&amp;report_id=7" />
+
+	<subitem item="sales_reports" title="milkrun_report_full" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=full" />
+	<subitem item="sales_reports" title="milkrun_report_merchant" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=merchant" />
+	<subitem item="sales_reports" title="milkrun_report_3pl" href="%INDEX_SCRIPT?dispatch=milkrun_reports.reports&amp;type=3pl" />
+
+</reports> -->

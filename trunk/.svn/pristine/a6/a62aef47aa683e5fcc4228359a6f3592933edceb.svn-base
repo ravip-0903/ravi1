@@ -1,0 +1,6 @@
+<administration>
+	<item title="sdeep_iconization" dispatch="sdeep_iconization.manage" />
+</administration>
+<shippings_taxes>
+	<item title="sdeep_terms" dispatch="vendor_terms.manage" />
+</shippings_taxes>

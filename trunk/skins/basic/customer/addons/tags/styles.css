@@ -1,0 +1,44 @@
+.tags-buttons {
+	margin: -26px 0 0 230px;
+	white-space: nowrap;
+}
+.tags-buttons .button-submit {
+	vertical-align: middle;
+	margin-left: 10px;
+	margin-bottom: 0;
+}
+.tags-group {
+	font: italic normal 100% Arial, Helvetica, sans-serif;
+}
+.tags-list-container {
+	padding: 0 0 10px 7px;
+}
+/* tag addon */
+.tag-level-0 {
+	font-size: 69%;
+}
+
+.tag-level-1 {
+	font-size: 77%;
+}
+
+.tag-level-2 {
+	font-size: 92%;
+}
+
+.tag-level-3 {
+	font-size: 108%;
+}
+
+.tag-level-4 {
+	font-size: 123%;
+}
+
+.tag-level-5 {
+	font-size: 154%;
+}
+
+.tag-level-6 {
+	font-size: 192%;
+}
+/* /tag addon */

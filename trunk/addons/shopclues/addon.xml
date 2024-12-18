@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<addon>
+	<id>shopclues</id>
+	<name>Shop Clues Decoration and Design Components</name>
+	<priority>1900</priority>
+	<position>10</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<translations>
+
+	</translations>
+	
+	<opt_settings>
+		
+	</opt_settings>
+	
+	<opt_queries> 
+		<item>INSERT INTO `cscart_language_values` (`lang_code`, `name`, `value`) VALUES ('EN', 'shopclues', 'Shop Clues');</item>
+		<item for="uninstall">DELETE FROM `cscart_language_values` WHERE `cscart_language_values`.`lang_code` = 'EN' AND `cscart_language_values`.`name` = 'shopclues'</item>
+
+	</opt_queries>
+</addon>

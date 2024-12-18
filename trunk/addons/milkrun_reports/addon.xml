@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<addon>
+	<id>milkrun_reports</id>
+	<name>MilkRun Reports</name>
+	<priority>888888888888</priority>
+	<position>0</position>
+	<status>active</status>
+	<dependencies></dependencies>
+	<opt_language_variables>
+		<item lang="EN" id="milkrun_report_full">MilkRun Full Report</item>
+		<item lang="EN" id="milkrun_report_merchant">MilkRun Merchant Report</item>
+		<item lang="EN" id="milkrun_report_3pl">MilkRun 3PL Report</item>
+	</opt_language_variables>
+	
+</addon>

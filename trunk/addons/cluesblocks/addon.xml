@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<addon>
+	<id>cluesblocks</id>
+	<name>Cluesblocks</name>
+	<priority>2300</priority>
+	<position>120</position>
+	<status>active</status>
+	<dependencies></dependencies>
+</addon>

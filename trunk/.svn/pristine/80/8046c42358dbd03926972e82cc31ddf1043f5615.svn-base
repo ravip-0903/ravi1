@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<addon>
+	<id>sdeep</id>
+	<name>Customized Multivendor Solution for Sandeep Aggarwal</name>
+	<priority>413070912</priority>
+	<position>0</position>
+	<status>active</status>
+	<opt_settings>
+		<section name="general">
+			<item id="is_alternate_cod_behaviour">
+				<name>Alternate COD behaviour</name>
+				<type>checkbox</type>
+				<default_value>Y</default_value>
+			</item>
+			<item id="cod_payment_id">
+				<name>COD payment identifier</name>
+				<type>input</type>
+				<default_value>6</default_value>
+			</item>
+			<item id="warning_cod_selected">
+				<name>COD selected warning message</name>
+				<type>input</type>
+				<default_value>Please note that you will not receive CluesBucks for this order when you use Cash On Delivery. CluesBucks are added only when you Pay via Credit/Debit or Net Banking"</default_value>
+			</item>
+			<item id="free_shipping_html">
+				<name>HTML code to highlight products w/ free shipping</name>
+				<type>textarea</type>
+				<default_value><![CDATA[<p>Free shipping</p>]]></default_value>
+			</item>
+			<item id="free_shipping_highlight_color">
+				<name>Free shipping highlight color</name>
+				<type>input</type>
+				<default_value>red</default_value>
+			</item>
+			<item id="trm_percentage">
+				<name>Percentage of TRM vendors</name>
+				<type>input</type>
+				<default_value>20</default_value>
+			</item>
+			<item id="trm_icon_url">
+				<name>URL of the TRM icon</name>
+				<type>input</type>
+				<default_value>http://pics.ebaystatic.com/aw/pics/icons/iconTrsXLarge.gif</default_value>
+			</item>
+			<item id="trm_explanation_url">
+				<name>URL of the TRM explanation page</name>
+				<type>input</type>
+				<default_value>http://pages.ebay.com/topratedsellers/index.html</default_value>
+			</item>
+			<item id="features_brands_id">
+				<name>Identifier of the products' "Brands" feature</name>
+				<type>input</type>
+				<default_value>5</default_value>
+			</item>
+			<item id="what_these_mean_url">
+				<name>URL of the "What do these mean?" explanation page</name>
+				<type>input</type>
+				<default_value>http://www.amazon.com/gp/help/seller/at-a-glance.html?ie=UTF8&amp;seller=A13ACIRM091OJE</default_value>
+			</item>
+			<item id="cod_explanation_url">
+				<name>URL of the C.O.D. explanation page</name>
+				<type>input</type>
+				<default_value>http://en.wikipedia.org/wiki/Collect_on_delivery</default_value>
+			</item>
+			<item id="brand_thumb_width">
+				<name>Width of brand's icon image</name>
+				<type>input</type>
+				<default_value>60</default_value>
+			</item>
+		</section>
+	</opt_settings>
+	<opt_language_variables>
+		<item lang="EN" id="sdeep_sdeep">Customized Multivendor Solution for Sandeep Aggarwal</item>
+		<item lang="EN" id="sdeep_feedback">Feedback</item>
+		<item lang="EN" id="sdeep_auth_dealer">Authorized Dealer</item>
+		<item lang="EN" id="sdeep_please_rate_products">Please rate products</item>
+		<item lang="EN" id="sdeep_terms">Return policy, Shipping and Guarantee terms</item>
+		<item lang="EN" id="sdeep_return_terms">Return policy</item>
+		<item lang="EN" id="sdeep_guarantee_terms">Guarantee terms</item>
+		<item lang="EN" id="sdeep_shipping_terms">Shipping terms</item>
+		<item lang="EN" id="sdeep_vendor_rating_params">Vendor Rating Parameters</item>
+		<item lang="EN" id="sdeep_trm">Top Rated Vendor</item>
+		<item lang="EN" id="sdeep_configure_ratings">Configure Ratings</item>
+		<item lang="EN" id="sdeep_iconization">Iconization</item>
+		<item lang="EN" id="sdeep_pattern">Pattern</item>
+		<item lang="EN" id="sdeep_rate_vendor">Rate Vendor</item>
+		<item lang="EN" id="sdeep_rate_product">Rate Product</item>
+		<item lang="EN" id="sdeep_rating">Rating</item>
+		<item lang="EN" id="reward_points">Clues Bucks</item>
+		<item lang="EN" id="no_reward_points">No <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> defined</item>
+		<item lang="EN" id="reward_points_log"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> log</item>
+		<item lang="EN" id="text_user_points">Number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> on user account exceeds</item>
+		<item lang="EN" id="text_order_points">Number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> in order exceeds</item>
+		<item lang="EN" id="reward_points_menu_description">Assign global <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> in your store.</item>
+		<item lang="EN" id="reward_points_menu_description">Assign global <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> in your store.</item>
+		<item lang="EN" id="customer_reward_points"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> rewarded:</item>
+		<item lang="EN" id="text_cannot_apply_points_to_this_order_because_total">Unfortunately, you cannot apply <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> to this order, because the total cost is zero.</item>
+		<item lang="EN" id="text_cannot_apply_points_to_this_order_because_user">Unfortunately, you cannot apply <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> to this order, because you do not have enough points at the account.</item>
+		<item lang="EN" id="text_not_all_the_points_will_be_used">Not all the <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> will be used, because the number you entered is larger than allowed.</item>
+		<item lang="EN" id="text_points_exceed_points_on_account">The number of the <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> entered by you exceeds the number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> at your account.</item>
+		<item lang="EN" id="text_points_exceed_points_that_can_be_applied">The number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> entered by you exceeds the number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> that can be applied to this order.</item>
+		<item lang="EN" id="points_lower"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="text_points_cannot_applied_because_subtotal_redeemed"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> cannot be applied because the subtotal is completely redeemed.</item>
+		<item lang="EN" id="price_in_points_decreased">Price in <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> has been decreased by</item>
+		<item lang="EN" id="price_in_points_increased">Price in <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> has been increased by</item>
+		<item lang="EN" id="promotion_cond_reward_points"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> on user account</item>
+		<item lang="EN" id="promotion_bonus_give_points">Give <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="add_subtract_points">Add &amp; subtract <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="points"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="change_points">Change <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="changed_points">Changed <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="my_points">My <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="is_pbp">Allow payment by <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="points_to_use"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> to use</item>
+		<item lang="EN" id="points_in_use"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> in use</item>
+		<item lang="EN" id="text_points_used_in_order"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> were used in order</item>
+		<item lang="EN" id="number_of_points">Number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="earned_points"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> earned per product</item>
+		<item lang="EN" id="price_in_points">Price in <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="view_user_points">View user <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="pay_by_points">Allow payment by <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="text_points_in_order">The number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> that can be applied to the order is</item>
+		<item lang="EN" id="points_rate"><![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> Exchange Rate (the number of Clues Bucks equal to</item>
+		<item lang="EN" id="text_point_in_account">The number of <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> on your account is</item>
+		<item lang="EN" id="text_increase_points_in_use">The <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> used in the order were added to user account.</item>
+		<item lang="EN" id="text_decrease_points_in_use">The <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]> used in the order were subtracted from user account.</item>
+		<item lang="EN" id="text_order_status_has_not_been_changed">The order status has not been changed, because the user did not have enough <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]>.</item>
+		<item lang="EN" id="point_price">Price in <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+		<item lang="EN" id="override_gc_points_brief">Override global/category <![CDATA[<a href="index.php?dispatch=pages.view&page_id=66">Clues Bucks</a>]]></item>
+	</opt_language_variables>
+	<opt_queries>
+		<item>CREATE TABLE ?:sdeep_rating_params (rating_id mediumint(9) NOT NULL, name VARCHAR(255) NOT NULL, icon_url VARCHAR(255) NOT NULL, PRIMARY KEY (rating_id)) ENGINE=MyISAM DEFAULT CHARSET=utf8</item>
+		<item>INSERT INTO ?:sdeep_rating_params (rating_id,name) VALUES(0, 'shipping time'),(1,'shipping cost'),(2,'product quality'),(3, 'value for money')</item>
+		<item for="uninstall">DROP TABLE IF EXISTS ?:sdeep_rating_params</item>
+		<item>CREATE TABLE ?:sdeep_lang_icons (pattern VARCHAR(255) NOT NULL, icon_url VARCHAR(255) NOT NULL,UNIQUE(pattern)) ENGINE=MyISAM DEFAULT CHARSET=utf8</item>
+		<item for="uninstall">DROP TABLE IF EXISTS ?:sdeep_lang_icons</item>
+		<item>ALTER TABLE ?:companies ADD icon_url VARCHAR(255) NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:companies DROP icon_url</item>
+		<item>ALTER TABLE ?:orders ADD rating_info TEXT NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:orders DROP rating_info</item>
+		<item>ALTER TABLE ?:companies ADD terms TEXT NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:companies DROP terms</item>
+		<item>ALTER TABLE ?:products ADD sdeep_rating_info VARCHAR(255) NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:products DROP sdeep_rating_info</item>
+		<item>ALTER TABLE ?:companies ADD sdeep_rating decimal(12,2) NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:companies DROP rating</item>
+		<item>ALTER TABLE ?:companies ADD sdeep_features VARCHAR(255) NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:companies DROP sdeep_features</item>
+		<item>ALTER TABLE ?:companies ADD is_trm CHAR(1) DEFAULT "N" NOT NULL</item>
+		<item for="uninstall">ALTER TABLE ?:companies DROP is_trm</item>
+	</opt_queries>
+</addon>

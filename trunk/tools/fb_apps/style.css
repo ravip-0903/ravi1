@@ -1,0 +1,21 @@
+body{margin:auto 0px;}
+label, div, a, span, ul, li{margin:0; padding:0;}
+.pj2_fb_signup_bg{width:809px; position:relative; margin:auto; float:left;  background:url(images/pj2_fb_signup_bg.jpg) no-repeat;  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;}
+.pj2_fb_signup_bg .pj2_like_us{float:right;}
+.pj2_fb_signup_bg .pj2_signup_text{float:left;}
+.pj2_fb_signup_bg .pj2_signup_text .signup{float:left; font-size:40px; margin:6px 0 0 110px;}
+.pj2_fb_signup_bg .pj2_signup_text .win_shuffle{float:left; font-size:50px; font-weight:bold; color:#0d8dc9;margin:0 0 0 15px;}
+.pj2_fb_signup_bg .pj2_signup_text .free_text{clear:both; float:left;margin:0 0 30px 10px;}
+.pj2_fb_signup_bg .pj2_fb_signup_box{float:left; font-size:20px; margin:0 0 0 37px; width:425px;}
+.pj2_fb_signup_bg .pj2_fb_signup_box span.pj2_field_name{float:left; clear:both; width:175px; margin:18px 0 0px;}
+.pj2_fb_signup_bg .pj2_fb_signup_box div.pj2_field_data{float:left; line-height:28px; font-size:20px; width:245px;margin:18px 0 0px;}
+.pj2_fb_signup_bg .pj2_fb_signup_box div.pj2_field_data input.pj2_text{border-width:1px 1px 2px 1px; border-color:#ccc; border-style:solid; width:240px; height:24px; font-size:18px; color:#aaa;}
+.pj2_fb_signup_bg .pj2_fb_signup_box div.pj2_field_data select{border-width:1px 1px 2px 1px; border-color:#ccc; border-style:solid; width:240px; height:24px; font-size:18px; color:#aaa;}
+.pj2_fb_signup_bg .pj2_fb_signup_box div.pj2_field_data input.pj2_m_f_radio{height:24px; float:left;}
+.pj2_fb_signup_bg .pj2_fb_signup_box div.pj2_field_data label.pj2_title{float:left; margin:0 14px 0 5px;}
+.pj2_fb_signup_bg .pj2_fb_signup_box input.pj2_fb_signup_btn{background:url(images/signup_btn.png) no-repeat; height:54px; width:177px; border:0; margin:15px 0 0 165px; cursor:pointer;}
+.pj2_fb_signup_bg .pj2_prd_image{float:right; margin:0 6px 0 -60px; position:absolute; top:120px; right:10px;}
+.pj2_fb_signup_bg .pj2_shopclues_logo{float:right; clear:both;}
+.pj2_empty_error_message{margin:0px 0 0px 175px; color:#ff0000; font-size:12px; clear:both; display:block;}
+
+.fb_error_reg{background: none repeat scroll 0 0 #FF0000; padding:2px 0px 2px 0px;  clear: left; margin:0 0 20px; color: #FFFFFF; display: block; text-align: center;}

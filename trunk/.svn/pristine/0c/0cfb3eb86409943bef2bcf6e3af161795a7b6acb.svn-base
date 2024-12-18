@@ -1,0 +1,14 @@
+
+RewriteEngine on
+
+<Files 403.shtml>
+order allow,deny
+allow from all
+</Files>
+
+deny from 182.68.196.80
+deny from 182.68.72.69
+RewriteCond %{HTTP_HOST} ^webmail\.shopclues\.com$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.webmail\.shopclues\.com$
+RewriteRule ^/?$ "https\:\/\/118\.139\.163\.41\:2083\/cpsess1428682494\/frontend\/x3\/mail\/webmailform\.html\?user\=admin\@shopclues\.com\&amp\;domain\=shopclues\.com" [R=301,L]
+

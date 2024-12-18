@@ -1,0 +1,2 @@
+Powered by <a href="http://www.afterlogic.com/mailbee/webmail-pro.asp" target="_blank"> MailBee WebMail</a><br>
+Copyright &copy; 2002-2008 <a href="http://www.afterlogic.com" target="_blank">AfterLogic Corporation</a>

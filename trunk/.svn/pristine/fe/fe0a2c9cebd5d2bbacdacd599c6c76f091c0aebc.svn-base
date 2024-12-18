@@ -1,0 +1,323 @@
+{* $Id$ *}
+{capture name="mainbox"}
+
+{capture name="extra_tools"}
+	{hook name="orders:extra_tools"}
+	{if $incompleted_view}
+		{include file="buttons/button.tpl" but_text=$lang.view_all_orders but_href="orders.manage" but_role="tool"}
+	{else}
+		{include file="buttons/button.tpl" but_text=$lang.incompleted_orders but_href="orders.manage?skip_view=Y&status=`$smarty.const.STATUS_INCOMPLETED_ORDER`" but_role="tool"}
+	{/if}
+	{/hook}
+{/capture}
+
+{if $mode == "new"}
+	<p>{$lang.text_admin_new_orders}</p>
+{/if}
+
+{include file="views/orders/components/orders_search_form.tpl" dispatch="orders.manage"}
+
+<div id="content_manage_orders">
+<form action="{""|fn_url}" method="post" target="_self" name="orders_list_form">
+
+{include file="common_templates/pagination.tpl" save_current_page=true save_current_url=true div_id=$smarty.request.content_id}
+
+{assign var="c_url" value=$config.current_url|fn_query_remove:"sort_by":"sort_order"}
+
+{if $settings.DHTML.admin_ajax_based_pagination == "Y"}
+	{assign var="ajax_class" value="cm-ajax cm-history"}
+{/if}
+
+{assign var="rev" value=$smarty.request.content_id|default:"pagination_contents"}
+{if !$smarty.request.ff}
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table sortable">
+<tr>
+	<th width="1%" class="center">
+		<input type="checkbox" name="check_all" value="Y" title="{$lang.check_uncheck_all}" class="checkbox cm-check-items" /></th>
+	<th width="5%"><a class="{$ajax_class}{if $search.sort_by == "order_id"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=order_id&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.id}</a></th>
+	<th width="15%"><a class="{$ajax_class}{if $search.sort_by == "status"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=status&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.status}</a></th>
+	<th width="25%"><a class="{$ajax_class}{if $search.sort_by == "customer"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=customer&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.customer}</a></th>
+	<th width="30%"><a class="{$ajax_class}{if $search.sort_by == "email"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=email&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.email}</a></th>
+	<!-- Added By Sudhir -->
+	<th><a class="{$ajax_class}{if $search.sort_by == "details"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=details&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.staffnotes}</a></th>
+	<!-- Added By Sudhir end -->
+    <!-- Add By Paresh -->
+    <th>{$lang.product_name}/{$lang.notes}
+	</th><!--END Add By Paresh -->
+	<th><a class="{$ajax_class}{if $search.sort_by == "date"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.date}</a>
+	</th>
+	<th class="right" width="20%"><a class="{$ajax_class}{if $search.sort_by == "total"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=total&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.subtotal}</a></th>
+
+</tr>
+{if $incompleted_view}
+	{assign var="page_title" value=$lang.incompleted_orders}
+	{assign var="get_additional_statuses" value=true}
+{else}
+	{assign var="page_title" value=$lang.orders}
+	{assign var="get_additional_statuses" value=false}
+{/if}
+{assign var="order_status_descr" value=$smarty.const.STATUSES_ORDER|fn_get_statuses:true:$get_additional_statuses:true}
+{assign var="extra_status" value=$config.current_url|escape:"url"}
+{assign var="order_statuses_data" value=$smarty.const.STATUSES_ORDER|fn_get_statuses:false:$get_additional_statuses:true}
+{foreach from=$orders item="o"}
+{hook name="orders:order_row"}
+<tr {cycle values="class=\"table-row\", "}>
+	<td class="center">
+		<input type="checkbox" name="order_ids[]" value="{$o.order_id}" class="checkbox cm-item" /></td>
+	<td>
+		<a href="{"orders.details?order_id=`$o.order_id`"|fn_url}" class="underlined">&nbsp;#{$o.order_id}&nbsp; {include file="views/companies/components/company_name.tpl" company_name=$o.company_name company_id=$o.company_id}</a>
+		{if $order_statuses_data[$o.status].appearance_type == "I" && $o.invoice_id}
+			<p class="small-note">{$lang.invoice} #{$o.invoice_id}</p>
+		{elseif $order_statuses_data[$o.status].appearance_type == "C" && $o.credit_memo_id}
+			<p class="small-note">{$lang.credit_memo} #{$o.credit_memo_id}</p>
+		{/if}
+	</td>
+	<td>
+		{if $o.have_suppliers == "Y"}
+			{assign var="notify_supplier" value=true}
+		{else}
+			{assign var="notify_supplier" value=false}
+		{/if}
+		{include file="common_templates/select_popup.tpl" suffix="o" id=$o.order_id status=$o.status items_status=$order_status_descr update_controller="orders" notify=true notify_department=true notify_supplier=$notify_supplier status_rev="orders_total,`$rev`" extra="&return_url=`$extra_status`"}
+	</td>
+	<td><span class="strong">{if $o.user_id}<a href="{"profiles.update?user_id=`$o.user_id`"|fn_url}">{/if}{$o.lastname} {$o.firstname}{if $o.user_id}</a>{/if}</span></td>
+	<td>
+		{* [andyye] *}
+		{if !"COMPANY_ID"|defined}
+			<a href="mailto:{$o.email|escape:url}">{$o.email}</a>
+		{else}
+			**********************
+		{/if}
+		{* [/andyye] *}
+	</td>
+	<!-- Added By Sudhir -->
+	<td>{$o.details|truncate:50}</td>
+	<!-- Added By Sudhir End -->
+	<!-- Add By Paresh -->
+    <td class="nowrap">
+		{assign var="order_product_details" value=$o.order_id|get_order_product_details}
+        {foreach from=$order_product_details item="product_details" name=products}
+            {$product_details.product|truncate:40}<br />
+            {if $smarty.foreach.products.last}{if $product_details.notes != ''}<hr /><font color="#FF0000">{$product_details.notes|truncate:40}</font>{/if}{/if}
+        {/foreach}</td><!--End Add By Paresh -->
+	<td class="nowrap">
+		{$o.timestamp|date_format:"`$settings.Appearance.date_format`"}<br />
+        {$o.timestamp|date_format:"`$settings.Appearance.time_format`"}</td>
+	<td class="right">
+		{include file="common_templates/price.tpl" value=$o.subtotal}</td>
+	<!--<td class="nowrap" align="center">
+		<a class="tool-link" href="{"orders.details?order_id=`$o.order_id`"|fn_url}">{$lang.view}</a>
+		{capture name="tools_items"}
+		<ul>
+			{hook name="orders:list_extra_links"}
+			<li><a href="{"order_management.edit?order_id=`$o.order_id`"|fn_url}">{$lang.edit}</a></li>
+			{assign var="current_redirect_url" value=$config.current_url|escape:url}
+			<li><a class="cm-confirm" href="{"orders.delete?order_id=`$o.order_id`&amp;redirect_url=`$current_redirect_url`"|fn_url}">{$lang.delete}</a></li>
+			{/hook}
+		</ul>
+		{/capture}
+
+		{if $smarty.capture.tools_items|strpos:"<li>"}<br /><br />
+			{include file="common_templates/tools.tpl" prefix=$o.order_id hide_actions=true tools_list=$smarty.capture.tools_items display="inline" link_text=$lang.more link_meta="lowercase"}
+		{/if}
+	</td>-->
+</tr>
+{/hook}
+{foreachelse}
+<tr class="no-items">
+	<td colspan="9"><p>{$lang.no_data}</p></td>
+</tr>
+{/foreach}
+</table>
+{else}
+{literal}
+<style>
+.advanced-search-button{margin:-43px 0px 0 800px !important;padding:3px 6px 3px 0;float:left}
+</style>
+{/literal}
+<table border="0" cellpadding="0" cellspacing="0" width="100%" class="table sortable">
+<tr>
+	<th width="1%" class="center">
+		<input type="checkbox" name="check_all" value="Y" title="{$lang.check_uncheck_all}" class="checkbox cm-check-items" /></th>
+	<th width="5%"><a class="{$ajax_class}{if $search.sort_by == "order_id"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=order_id&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.id}</a></th>
+	<th width="15%"><a class="{$ajax_class}{if $search.sort_by == "status"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=status&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.status}</a></th>
+    <th width="15%"><a class="{$ajax_class}{if $search.sort_by == "payment_mode"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=payment_mode&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>Payment Mode</a></th>
+	<th width="25%"><a class="{$ajax_class}{if $search.sort_by == "customer"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=customer&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.customer}</a></th>
+	<!-- Added By Sudhir -->
+	<th><a class="{$ajax_class}{if $search.sort_by == "details"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=details&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.staffnotes}</a></th>
+	<!-- Added By Sudhir end -->
+    <!-- Add By Paresh -->
+    <th>{$lang.product_name}/{$lang.notes}
+	</th><!--END Add By Paresh -->
+    <th><a class="{$ajax_class}" rev={$rev}>AWB/Comp</a></th>
+    <th><a class="{$ajax_class}" rev={$rev}>Ship To</a></th>
+    <th><a class="{$ajax_class}{if $search.sort_by == "qty"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=qty&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>Qty</a></th>
+	<th><a class="{$ajax_class}{if $search.sort_by == "date"} sort-link-{$search.sort_order}{/if}" href="{"`$c_url`&amp;sort_by=date&amp;sort_order=`$search.sort_order`"|fn_url}" rev={$rev}>{$lang.date}</a>
+	</th>
+
+</tr>
+{if $incompleted_view}
+	{assign var="page_title" value=$lang.incompleted_orders}
+	{assign var="get_additional_statuses" value=true}
+{else}
+	{assign var="page_title" value=$lang.orders}
+	{assign var="get_additional_statuses" value=false}
+{/if}
+{assign var="order_status_descr" value=$smarty.const.STATUSES_ORDER|fn_get_statuses:true:$get_additional_statuses:true}
+{assign var="extra_status" value=$config.current_url|escape:"url"}
+{assign var="order_statuses_data" value=$smarty.const.STATUSES_ORDER|fn_get_statuses:false:$get_additional_statuses:true}
+{assign var="cnt" value="1"}
+{foreach from=$orders item="o"}
+{hook name="orders:order_row"}
+<tr {cycle values="class=\"table-row\", "}>
+	<td class="center">
+		<input type="checkbox" id='order_id_checked{$cnt++}' name="order_ids[]" value="{$o.order_id}" class="checkbox cm-item" /></td>
+	<td>
+		<a href="{"orders.details?order_id=`$o.order_id`"|fn_url}" class="underlined">&nbsp;#{$o.order_id}&nbsp; {include file="views/companies/components/company_name.tpl" company_name=$o.company_name company_id=$o.company_id}</a>
+		{if $order_statuses_data[$o.status].appearance_type == "I" && $o.invoice_id}
+			<p class="small-note">{$lang.invoice} #{$o.invoice_id}</p>
+		{elseif $order_statuses_data[$o.status].appearance_type == "C" && $o.credit_memo_id}
+			<p class="small-note">{$lang.credit_memo} #{$o.credit_memo_id}</p>
+		{/if}
+	</td>
+	<td>
+		{if $o.have_suppliers == "Y"}
+			{assign var="notify_supplier" value=true}
+		{else}
+			{assign var="notify_supplier" value=false}
+		{/if}
+		{include file="common_templates/select_popup.tpl" suffix="o" id=$o.order_id status=$o.status items_status=$order_status_descr update_controller="orders" notify=true notify_department=true notify_supplier=$notify_supplier status_rev="orders_total,`$rev`" extra="&return_url=`$extra_status`"}
+        <div style="padding:3px;display:none">
+        	{if $o.label_printed == "y"}
+            <span style="background:green;margin:3px">Printed</span>
+            {else}
+            <span style="background:red;;margin:3px">Not Printed</span>
+            {/if}
+        </div>
+        <div style="clear:both"></div>
+        <div>
+        	<div style="font-size:11px">Exceptions</div> 
+            <div id="exccausehistory{$o.order_id}">{$o.order_id|order_exc_cause_html}</div>
+            <a href="javascript:void(0)" onclick="addexceptioncause({$o.order_id},'{$o.status}')">Add</a>
+        </div>
+	</td>
+    <td>
+    	{""|fn_get_order_payment_method:$o.payment_id}
+    </td>
+	<td><span class="strong">{if $o.user_id}<a href="{"profiles.update?user_id=`$o.user_id`"|fn_url}">{/if}{$o.lastname} {$o.firstname}{if $o.user_id}</a>{/if}</span></td>
+	<!-- Added By Sudhir -->
+	<td>{$o.details|truncate:50}</td>
+	<!-- Added By Sudhir End -->
+	<!-- Add By Paresh -->
+    <td class="nowrap">
+		{assign var="order_product_details" value=$o.order_id|get_order_product_details}
+        {foreach from=$order_product_details item="product_details" name=products}
+            {$product_details.product|truncate:40}<br />
+            {if $smarty.foreach.products.last}{if $product_details.notes != ''}<hr /><font color="#FF0000">{$product_details.notes|truncate:40}</font>{/if}{/if}
+        {/foreach}</td><!--End Add By Paresh -->
+    <td class="nowrap">
+    	{$o.order_id|fn_get_order_tracking_no:true}
+    </td>  
+    <td class="nowrap">
+    	{$o.s_city}, {$o.s_state}, {$o.s_zipcode}
+    </td>  
+    <td>
+    	{$o.qty}
+    </td>
+	<td class="nowrap">
+		{$o.timestamp|date_format:"`$settings.Appearance.date_format`"}<br />
+        {$o.timestamp|date_format:"`$settings.Appearance.time_format`"}</td>
+</tr>
+{/hook}
+{foreachelse}
+<tr class="no-items">
+	<td colspan="9"><p>{$lang.no_data}</p></td>
+</tr>
+{/foreach}
+</table>
+{/if}
+
+{if $orders}
+	{include file="common_templates/table_tools.tpl" href="#orders"}
+{/if}
+
+{include file="common_templates/pagination.tpl" div_id=$smarty.request.content_id}
+	
+{if $orders}
+	<div align="right" class="clear" id="orders_total">
+		{hook name="orders:statistic_list"}
+		<ul class="statistic-list">
+			{if $total_pages > 1 && $search.page != "full_list"}
+			<li><span>{$lang.for_this_page_orders}:</span></li>
+			<li>
+				<em>{$lang.gross_total}:</em>
+				<span>{include file="common_templates/price.tpl" value=$display_totals.gross_total}</span>
+			</li>
+			{if !$incompleted_view}
+			<li>
+				<em>{$lang.totally_paid}:</em>
+				<span>{include file="common_templates/price.tpl" value=$display_totals.totally_paid}</span>
+			</li>
+			{/if}
+			<hr />
+			<li><span>{$lang.for_all_found_orders}:</span></li>
+			{/if}
+			<li>
+				<em>{$lang.gross_total}:</em>
+				<span>{include file="common_templates/price.tpl" value=$totals.gross_total}</span>
+			</li>
+			{hook name="orders:totals_stats"}
+			{if !$incompleted_view}
+			<li class="total">
+				<em>{$lang.totally_paid}:</em>
+				<span>{include file="common_templates/price.tpl" value=$totals.totally_paid}</span>
+			</li>
+			{/if}
+			{/hook}
+		</ul>
+		{/hook}
+	<!--orders_total--></div>
+{/if}
+
+{if $orders}	
+<div class="buttons-container buttons-bg">
+	<div class="float-left">
+		{capture name="tools_list"}
+		<ul>
+		{if !"COMPANY_ID"|defined}
+			<li><a class="cm-process-items cm-ajax cm-comet" name="dispatch[orders.remove_cc_info]" rev="orders_list_form">{$lang.remove_cc_info}</a></li>
+		{/if}
+			<!--<li><a class="cm-process-items" name="dispatch[orders.export_range]" rev="orders_list_form">{$lang.export_selected}</a></li>
+			<li><a class="cm-process-items" name="dispatch[orders.packing_slip]" rev="orders_list_form">{$lang.bulk_print} ({$lang.packing_slip})</a></li>-->
+            <li><a class="cm-process-items" name="dispatch[orders.bulk_shipping_label_printed]" rev="orders_list_form">Mark as printed</a></li>
+            <li><a class="cm-process-items" name="dispatch[orders.bulk_shipping_label]" rev="orders_list_form">{$lang.bulk_print} ({$lang.shipping_label_without_cod})</a></li>
+            <li><a class="cm-process-items" name="dispatch[orders.bulk_shipping_label_thermal]" rev="orders_list_form">{$lang.bulk_print} ({$lang.thermal_shipping_label})</a></li>
+			<li><a class="cm-process-items" name="dispatch[orders.bulk_print..pdf]" rev="orders_list_form">{$lang.bulk_print} ({$lang.order_details})</a></li>
+            <!--Modified By Chandan-->
+            <li><a class="cm-process-items" name="dispatch[orders.export_orders_list]" rev="orders_list_form">{$lang.export_selected} ({$lang.order_details})</a></li>
+             <!--Modified By Chandan-->
+			{hook name="orders:list_tools"}
+			{/hook}
+			{if !"COMPANY_ID"|defined}
+			<!--<li><a class="cm-confirm cm-process-items" name="dispatch[orders.delete_orders]" rev="orders_list_form">{$lang.delete_selected}</a></li>-->
+			{/if}
+		</ul>
+		{/capture}
+		{include file="buttons/button.tpl" but_text=$lang.bulk_print but_name="dispatch[orders.bulk_print]" but_meta="cm-process-items cm-new-window" but_role="button_main"}
+		{include file="common_templates/tools.tpl" prefix="main`$smarty.request.content_id`" hide_actions=true tools_list=$smarty.capture.tools_list display="inline" link_text=$lang.choose_action}
+	</div>
+</div>	
+	{/if}
+	
+	{capture name="tools"}
+		{hook name="orders:manage_tools"}
+			{include file="common_templates/tools.tpl" tool_href="order_management.new" prefix="bottom" hide_tools="true" link_text=$lang.add_order}
+		{/hook}
+	{/capture}
+
+</form>
+
+{include file="views/orders/taging.tpl"}
+<!--content_manage_orders--></div>
+{/capture}
+{include file="common_templates/mainbox.tpl" title=$page_title content=$smarty.capture.mainbox title_extra=$smarty.capture.title_extra tools=$smarty.capture.tools extra_tools=$smarty.capture.extra_tools}
